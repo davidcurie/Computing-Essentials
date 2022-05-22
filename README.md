@@ -49,6 +49,7 @@ requires you to install your own packages.
 > environments, remain consistent and stick with `conda` whenever possible.
 
 [^terminal]: Windows PowerShell is insufficient. GitBash (optional install with Windows Git) is sufficient.
+
 [git]: https://git-scm.com
 [anaconda]: https://www.anaconda.com
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
@@ -67,7 +68,7 @@ additional free resources:
 
 Each lesson is outlined as a follow-along set of instructions contained in a single
 document. These can be accessed from the `lessons` folder in this repository or online
-at <https://github.com/davidcurie/Computing_Essentials/lessons/>.
+at <https://github.com/davidcurie/Computing-Essentials/lessons/>.
 
 Beginners: [Start here](lessons/first_steps)
 
@@ -78,7 +79,7 @@ are most useful to you.
 
 #### Git
 
-- GitIt tutorial
+- [Git-It](http://jlord.us/git-it/) tutorial
 - Initialize a dummy repository
 - Make some commits, and learn the basics
     - View diff of files
