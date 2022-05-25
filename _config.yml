@@ -1,0 +1,75 @@
+# In _config.yml
+title: "Computing Essentials"
+author: "David Curie"
+copyright: "2022 David Curie"
+# logo: logo.png
+execute:
+  execute_notebooks: force
+
+repository:
+  url                       : "https://github.com/davidcurie/Computing-Essentials"  # Online location of your book
+  path_to_book              : .  # Optional path to your book, relative to the repository root
+  branch                    : main  # Which branch of the repository should be used when creating links (optional)
+
+html:
+  home_page_in_navbar: true
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+  # favicon: images/favicon.ico
+  use_fullscreen_button: false
+
+sphinx:
+  config:
+    html_theme: "furo"
+    html_theme_options: 
+        "light_css_variables":
+            "color-problematic": "#cc241d"
+            "color-foreground-primary": "#282828"
+            "color-foreground-secondary": "#3c3836"
+            "color-foreground-muted": "#504945"
+            "color-foreground-border": "#665c54"
+            "color-background-primary": "#f9f5d7"
+            "color-background-secondary": "#fbf1c7"
+            "color-background-hover": "#d5c4a1"
+            "color-background-hover--transparent": "#d5c4a1"
+            "color-background-border": "#a89984"
+            "color-background-item": "#a89984"
+            "color-announcement-background": "#282828dd"
+            "color-announcement-text": "#fbf1c7"
+            "color-brand-primary": "#79740e"
+            "color-brand-content": "#458588"
+            "color-highlight-on-target": "#ebdbb2"
+            "color-highlighted-background": "#fabd2f"
+            "color-guilabel-background": "#b1628680"
+            "color-guilabel-border": "#b1628680"
+            "color-admonition-title": "#b16286"
+        "dark_css_variables":
+            "color-problematic": "#fb4934"
+            "color-foreground-primary": "#fbf1c7"
+            "color-foreground-secondary": "#ebdbb2"
+            "color-foreground-muted": "#d5c4a1"
+            "color-foreground-border": "#bdae93"
+            "color-background-primary": "#282828"
+            "color-background-secondary": "#1d2021"
+            "color-background-hover": "#3c3836"
+            "color-background-hover--transparent": "#3c3836"
+            "color-background-border": "#928374"
+            "color-background-item": "#928374"
+            "color-announcement-background": "#fbf1c7dd"
+            "color-announcement-text": "#282828"
+            "color-brand-primary": "#b8bb26"
+            "color-brand-content": "#83a598"
+            "color-highlight-on-target": "#1d2021"
+            "color-highlighted-background": "#d79921"
+            "color-guilabel-background": "#d3869b80"
+            "color-guilabel-border": "#d3869b80"
+            "color-admonition-title": "#d3869b80"
+    pygments_style: "gruvbox-light"
+    # pygments_dark_style: "solarized-dark"
+    copybutton_prompt_text: '>>> |\.\.\. |^.*[^ ] [%$] |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: '
+    copybutton_prompt_is_regexp: true
+
+# Add a bibtex file so that we can create citations
+# bibtex_bibfiles:
+  # - references.bib
