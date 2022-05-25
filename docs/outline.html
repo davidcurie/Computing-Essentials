@@ -1,0 +1,490 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+        <title>Computing Essentials - Computing Essentials</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #fbf1c7;
+  --color-code-foreground: black;
+  --color-problematic: #cc241d;
+  --color-foreground-primary: #282828;
+  --color-foreground-secondary: #3c3836;
+  --color-foreground-muted: #504945;
+  --color-foreground-border: #665c54;
+  --color-background-primary: #f9f5d7;
+  --color-background-secondary: #fbf1c7;
+  --color-background-hover: #d5c4a1;
+  --color-background-hover--transparent: #d5c4a1;
+  --color-background-border: #a89984;
+  --color-background-item: #a89984;
+  --color-announcement-background: #282828dd;
+  --color-announcement-text: #fbf1c7;
+  --color-brand-primary: #79740e;
+  --color-brand-content: #458588;
+  --color-highlight-on-target: #ebdbb2;
+  --color-highlighted-background: #fabd2f;
+  --color-guilabel-background: #b1628680;
+  --color-guilabel-border: #b1628680;
+  --color-admonition-title: #b16286;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-problematic: #fb4934;
+  --color-foreground-primary: #fbf1c7;
+  --color-foreground-secondary: #ebdbb2;
+  --color-foreground-muted: #d5c4a1;
+  --color-foreground-border: #bdae93;
+  --color-background-primary: #282828;
+  --color-background-secondary: #1d2021;
+  --color-background-hover: #3c3836;
+  --color-background-hover--transparent: #3c3836;
+  --color-background-border: #928374;
+  --color-background-item: #928374;
+  --color-announcement-background: #fbf1c7dd;
+  --color-announcement-text: #282828;
+  --color-brand-primary: #b8bb26;
+  --color-brand-content: #83a598;
+  --color-highlight-on-target: #1d2021;
+  --color-highlighted-background: #d79921;
+  --color-guilabel-background: #d3869b80;
+  --color-guilabel-border: #d3869b80;
+  --color-admonition-title: #d3869b80;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-problematic: #fb4934;
+  --color-foreground-primary: #fbf1c7;
+  --color-foreground-secondary: #ebdbb2;
+  --color-foreground-muted: #d5c4a1;
+  --color-foreground-border: #bdae93;
+  --color-background-primary: #282828;
+  --color-background-secondary: #1d2021;
+  --color-background-hover: #3c3836;
+  --color-background-hover--transparent: #3c3836;
+  --color-background-border: #928374;
+  --color-background-item: #928374;
+  --color-announcement-background: #fbf1c7dd;
+  --color-announcement-text: #282828;
+  --color-brand-primary: #b8bb26;
+  --color-brand-content: #83a598;
+  --color-highlight-on-target: #1d2021;
+  --color-highlighted-background: #d79921;
+  --color-guilabel-background: #d3869b80;
+  --color-guilabel-border: #d3869b80;
+  --color-admonition-title: #d3869b80;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="intro.html"><div class="brand">Computing Essentials</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="intro.html">
+  
+  
+  <span class="sidebar-brand-text">Computing Essentials</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git-basics.html">Git Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="organize-data.html">Organize Data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/first-steps/introduction.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatting.html">Formatting</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <div class="tex2jax_ignore mathjax_ignore section" id="computing-essentials">
+<h1>Computing Essentials<a class="headerlink" href="#computing-essentials" title="Permalink to this headline">#</a></h1>
+<p>A short workshop on computing skills useful for an experimental physicist.</p>
+<ol class="simple">
+<li><p>Getting Started</p>
+<ul class="simple">
+<li><p>Download git</p></li>
+<li><p>Create GitHub account</p></li>
+<li><p>GitIt tutorial</p></li>
+<li><p>Ensure you have python 3.6+</p>
+<ul>
+<li><p>Anaconda or Miniconda distribution</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span></code> vs <code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+<li><p>Jupytext</p></li>
+<li><p>Create Exercism account</p>
+<ul>
+<li><p>Complete first exercise on each python concept</p></li>
+</ul>
+</li>
+<li><p>Tools of the trade</p>
+<ul>
+<li><p>Code editor (PyCharm, VS Code, Xcode, Vim)</p></li>
+<li><p>Terminal (Windows: Git Bash, Mac:Terminal)</p></li>
+<li><p>Code + visualizer (JupyterLab -&gt; App)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Git practices for collaboration</p>
+<ul class="simple">
+<li><p>Commit practices</p>
+<ul>
+<li><p>Rebase vs fast-forward</p></li>
+</ul>
+</li>
+<li><p>Git for scientific papers</p></li>
+<li><p>Git for scientific projects</p></li>
+<li><p>Git for this workshop’s exercises</p>
+<ul>
+<li><p>Advanced git usage for patching</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Python First Steps: NumPy and Matplotlib</p>
+<ul class="simple">
+<li><p>Basic math notation in Python</p></li>
+<li><p>Indexing arrays</p></li>
+<li><p>Plot a specified function</p></li>
+<li><p>Plot a spectrum from a .csv file</p></li>
+<li><p>Plot a spectrum from a .dat file</p></li>
+<li><p>Plot a series of related spectra that relate to increasing power</p></li>
+<li><p>Plot a waterfall spectra for a line scan</p></li>
+</ul>
+</li>
+<li><p>Data organization basics</p>
+<ul class="simple">
+<li><p>Clean data practices</p></li>
+<li><p>Documentation and data provenance</p></li>
+<li><p>Folder structure for projects</p></li>
+<li><p>Unit testing during development</p></li>
+<li><p>Functional programming guidelines</p></li>
+<li><p>SciPy and other operations</p>
+<ul>
+<li><p>Remove cosmic rays from a spectrum</p></li>
+<li><p>Fit a double-Lorentz oscillator to ODMR spectra</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Python wrangling for microscopy</p>
+<ul class="simple">
+<li><p>Building classes for data visualization</p>
+<ul>
+<li><p>USID format</p></li>
+</ul>
+</li>
+<li><p>Good plotting practices</p></li>
+<li><p>Open .h5 file and plot the image</p>
+<ul>
+<li><p>Plot spectra from 500 nm and above (using limits and array conditionals)</p></li>
+</ul>
+</li>
+<li><p>Re-factoring into modules for better exporting</p></li>
+<li><p>Generate a composite figure that plots a heatmap, spectrum, and linescan from a folder of files</p></li>
+<li><p>Apply an NMF decomposition to a hyperspectral dataset and plot the results</p></li>
+</ul>
+</li>
+<li><p>Data organization for multi-parameter database</p>
+<ul class="simple">
+<li><p>Shell-based manipulations</p>
+<ul>
+<li><p>Bulk renaming</p></li>
+<li><p>Moving</p></li>
+</ul>
+</li>
+<li><p>signac folder structure</p></li>
+<li><p>Archiving in databases</p></li>
+</ul>
+</li>
+<li><p>Coding in real life</p>
+<ul class="simple">
+<li><p>Design and share your own application</p></li>
+<li><p>Ex: Populate Excel spreadsheet with a list of new students from a roster</p>
+<ul>
+<li><p>Take my TA example and make it better</p></li>
+</ul>
+</li>
+<li><p>Ex: Design a lesson plan for this course</p>
+<ul>
+<li><p>Use git to establish an initial commit describing lesson outline</p></li>
+<li><p>Provide your own solution as a patch</p></li>
+<li><p>Rebase any updates to your intial outline that you rewrote during your solution</p></li>
+</ul>
+</li>
+<li><p>Ex: Monte Carlo simulation</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="more-info">
+<h2>More Info<a class="headerlink" href="#more-info" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Code and Data for the Social Sciences: A Practitioner’s Guide - <a class="reference external" href="https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf">https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf</a></p></li>
+<li><p>Best Practices for Scientific Computing - <a class="reference external" href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745">https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745</a></p></li>
+<li><p>Good Enough Practices in Scientific Computing - <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510</a></p></li>
+<li><p>On writing clean Jupyter notebooks - <a class="reference external" href="https://towardsdatascience.com/on-writing-clean-jupyter-notebooks-abdf6c708c75">https://towardsdatascience.com/on-writing-clean-jupyter-notebooks-abdf6c708c75</a></p></li>
+<li><p>[Archived post on Pycroscopy] - <a class="reference external" href="https://github.com/pycroscopy/pycroscopy/blob/phoenix/docs/USID_pyUSID_pycroscopy.pdf">https://github.com/pycroscopy/pycroscopy/blob/phoenix/docs/USID_pyUSID_pycroscopy.pdf</a></p></li>
+<li><p>Matplotlib Usage Guide - <a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/usage.html">https://matplotlib.org/stable/tutorials/introductory/usage.html</a></p></li>
+<li><p>Data Fitting in Python: Part I - <a class="reference external" href="http://emilygraceripka.com/blog/14">http://emilygraceripka.com/blog/14</a></p></li>
+<li><p>Data Fitting in Python: Part II - <a class="reference external" href="http://emilygraceripka.com/blog/16">http://emilygraceripka.com/blog/16</a></p></li>
+<li><p>Removing Spikes from Raman Spectra with Anomaly Detection: Whitaker-Hayes Algorithm in Python - <a class="reference external" href="https://towardsdatascience.com/removing-spikes-from-raman-spectra-8a9fdda0ac22">https://towardsdatascience.com/removing-spikes-from-raman-spectra-8a9fdda0ac22</a></p></li>
+<li><p>Monte Carlo Integration In Python For Noobs (15:31) - <a class="reference external" href="https://youtu.be/WAf0rqwAvgg">https://youtu.be/WAf0rqwAvgg</a></p></li>
+<li><p>NumPy Tutorial (2022): For Physicists, Engineers, and Mathematicians (1:32:41) - <a class="reference external" href="https://youtu.be/DcfYgePyedM">https://youtu.be/DcfYgePyedM</a></p></li>
+<li><p>SciPy Tutorial (2022): For Physicists, Engineers, and Mathematicians (1:33:28) - <a class="reference external" href="https://youtu.be/jmX4FOUEfgU">https://youtu.be/jmX4FOUEfgU</a></p></li>
+</ul>
+</div>
+</div>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Computing Essentials</a><ul>
+<li><a class="reference internal" href="#more-info">More Info</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    </body>
+</html>
