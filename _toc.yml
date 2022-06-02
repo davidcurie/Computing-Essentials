@@ -6,9 +6,6 @@ parts:
 - caption:
   chapters:
   - file: docs/getting-started
-  - file: docs/git-basics
-  - file: docs/organize-data
 - caption: Lessons
   chapters:
   - glob: lessons/first-steps/*
-  - file: docs/formatting
