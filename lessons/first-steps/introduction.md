@@ -220,7 +220,7 @@ with the `-i` flag and specify an extension for a backup file.
 Navigate to `~/Computing-Essentials` in a terminal and execute the following commands:
 
 ```bash
-~/Computing-Essentials $ wget -O make-first-steps.sh https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh
+~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh > make-first-steps.sh
 ~/Computing-Essentials $ chmod u+x make-first-steps.sh && sh make-first-steps.sh
 ```
 
