@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Formatting" href="../../docs/formatting.html" /><link rel="prev" title="Organize Data" href="../../docs/organize-data.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Getting Started" href="../../docs/getting-started.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>First Steps - Computing Essentials</title>
@@ -221,13 +221,10 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/git-basics.html">Git Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/organize-data.html">Organize Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">First Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/formatting.html">Formatting</a></li>
 </ul>
 
 </div>
@@ -265,44 +262,360 @@
 <div class="admonition-prerequisites admonition">
 <p class="admonition-title">Prerequisites</p>
 <ul class="simple">
-<li><p>Git-It Tutorial</p></li>
+<li><p>Bash terminal installed on your machine</p></li>
 </ul>
 </div>
 <div class="topic">
 <p class="topic-title">Objectives</p>
 <ul class="simple">
-<li><p>Become familiar with terminal execution</p></li>
-<li><p>Practice basic git commands</p></li>
+<li><p>Become familiar with terminal execution.</p></li>
+<li><p>Learn regular expression syntax.</p></li>
 </ul>
 </div>
 <div class="section" id="terminal">
 <h2>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">#</a></h2>
-<p>Why are terminal commands useful? -&gt; Because they shorten the time you spend manipulating files.</p>
-<p>Why would I spend time learning a complex set of commands when it easier to use a GUI tool supplied by my operating system?
-- GUI tools are limited in functionality in an effort to be simple to use
-- Don’t <em>memorize</em> commands. Outsource them to a script.</p>
+<p>Using a terminal doesn’t need to be a daunting experience. Even with minimal
+exposure and a basic comprehension of core concepts, we can understand simple
+one-line commands enough to save us hours of tedious file management.</p>
+<p>Our goal in this lesson is not to be fluent enough to have a conversation with
+our computer, but to learn the basic vocabulary enough to ask for directions.</p>
+<p>The most common file system management tools we will need in the terminal is
+for bulk transport of files and for pattern matching.</p>
+<p>The basic syntax for commands is <code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">-&lt;options&gt;</span> <span class="pre">-&lt;arguments&gt;</span></code>. Options are
+also sometimes called <em>flags</em> and alter the default behavior of a command. You
+can set default options for basic commands on your machine by creating an
+<em>alias</em> of the command and storing that alias in a runtime configuration for
+bash known as <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">#.bashrc</span>
+<span class="nb">alias</span> <span class="nv">ls</span><span class="o">=</span><span class="s1">'ls -FGh'</span>  <span class="c1"># set default flags for ls command</span>
+</pre></div>
+</div>
+<div class="section" id="file-management">
+<h3>File management<a class="headerlink" href="#file-management" title="Permalink to this headline">#</a></h3>
+<div class="section" id="ls-and-cd">
+<h4>ls and cd<a class="headerlink" href="#ls-and-cd" title="Permalink to this headline">#</a></h4>
+<p>View the contents of your current working directory with <code class="docutils literal notranslate"><span class="pre">ls</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ ls
+</pre></div>
+</div>
+<p>To view hidden files, pass the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag to view <em>all</em> files. Hidden files
+normally begin with a <code class="docutils literal notranslate"><span class="pre">.</span></code> and are not usually displayed in GUI system file
+managers. This is a developer’s way of protecting end-users from accidentally
+deleting important stuff. We will encounter some hidden files with <code class="docutils literal notranslate"><span class="pre">git</span></code> when
+we create local repositories.</p>
+</div>
+<div class="section" id="mv-and-cp">
+<h4>mv and cp<a class="headerlink" href="#mv-and-cp" title="Permalink to this headline">#</a></h4>
+<p>Moving and copying files follow a simple format.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ mv path/to/original/file.txt path/to/new/file.txt
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ cp path/to/original/file.txt path/to/copied/file.txt
+</pre></div>
+</div>
+<p>For a move command, the original file is deleted from its original location, so
+be mindful that if you mistype the output directory, you may have trouble
+finding your file. Neither of these commands gives feedback when they run
+successfully, but they do throw an error when you attempt to move to a location
+that doesn’t already exist.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Most terminals have a history feature where you can view the last commands
+entered on the terminal without having to scroll all the way up in your
+terminal screen. These are commonly accessed by pressing the <kbd>up</kbd> and
+<kbd>down</kbd> arrows on your keyboard.</p>
+</div>
+<p>You can enter interactive mode in either of these commands by passing the <code class="docutils literal notranslate"><span class="pre">-i</span></code>
+flag. This will alert prompt you to confirm before any potentially dangerous overwrites.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ mv -i original.txt new/directory/original.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="mkdir">
+<h4>mkdir<a class="headerlink" href="#mkdir" title="Permalink to this headline">#</a></h4>
+<p>If a directory doesn’t yet exist, create it with <code class="docutils literal notranslate"><span class="pre">mkdir</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ mkdir -p a/series/of/new/nested/directories/
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag generates all of the parent directories in the specified
+path if they do not already exist. We can also generate multiple directories at
+once with parameter expansion shortcuts.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ mkdir -p directory<span class="o">{</span>A,B,10<span class="o">}</span>
+</pre></div>
+</div>
+<p>The above command generates <code class="docutils literal notranslate"><span class="pre">directoryA</span></code>, <code class="docutils literal notranslate"><span class="pre">directoryB</span></code>, and <code class="docutils literal notranslate"><span class="pre">directory10</span></code> by
+supplying each of the values in <code class="docutils literal notranslate"><span class="pre">{}</span></code> to the rest of the string. We can specify
+ranges by <code class="docutils literal notranslate"><span class="pre">{1..10}</span></code> and even compound iterations with <code class="docutils literal notranslate"><span class="pre">{{A..Z}{0..3}}</span></code>. The
+latter expression will expand to <code class="docutils literal notranslate"><span class="pre">A1</span></code>, <code class="docutils literal notranslate"><span class="pre">A2</span></code>, <code class="docutils literal notranslate"><span class="pre">A3</span></code>, <code class="docutils literal notranslate"><span class="pre">B1</span></code>, <code class="docutils literal notranslate"><span class="pre">B2</span></code>, …, <code class="docutils literal notranslate"><span class="pre">Z1</span></code>, <code class="docutils literal notranslate"><span class="pre">Z2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Z3</span></code>.</p>
+</div>
+<div class="section" id="rm">
+<h4>rm<a class="headerlink" href="#rm" title="Permalink to this headline">#</a></h4>
+<p>Remove files with <code class="docutils literal notranslate"><span class="pre">rm</span></code>, enter interactive mode with <code class="docutils literal notranslate"><span class="pre">-i</span></code>, and delete
+recursively all files in a directory with <code class="docutils literal notranslate"><span class="pre">-r</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ rm -ri directory* 
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">*</span></code> is a wildcard expansion for all characters after the pattern
+directory. This will match all directories that start with the pattern
+<code class="docutils literal notranslate"><span class="pre">directory</span></code>. The <code class="docutils literal notranslate"><span class="pre">-r</span></code> flag will delete all files inside a directory, but to
+delete the directory itself, pass the <code class="docutils literal notranslate"><span class="pre">-d</span></code> flag.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ rm -d directory*
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="find-and-replace">
+<h3>Find and Replace<a class="headerlink" href="#find-and-replace" title="Permalink to this headline">#</a></h3>
+<p>The tool we will demonstrate in this lesson is <code class="docutils literal notranslate"><span class="pre">sed</span></code> (short for <em>streamline
+editor</em>), but other useful tools are <code class="docutils literal notranslate"><span class="pre">awk</span></code> and <code class="docutils literal notranslate"><span class="pre">perl</span></code>.</p>
+<p>The basic syntax for <code class="docutils literal notranslate"><span class="pre">sed</span></code> is as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -options <span class="s1">'s/find/replace/'</span> input_file
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code> are placeholders for regular expressions used to
+match your desired text; the contents of the first <code class="docutils literal notranslate"><span class="pre">find</span></code> and replaced with
+<code class="docutils literal notranslate"><span class="pre">replace</span></code>. <code class="docutils literal notranslate"><span class="pre">sed</span></code> also accepts piped input, so we can test simple strings with
+<code class="docutils literal notranslate"><span class="pre">sed</span></code> to learn its behavior.</p>
+<p>What do you think the result of the following command will be?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ <span class="nb">echo</span> <span class="s2">"the cat in the hat"</span> <span class="p">|</span> sed <span class="s1">'s/a/u/'</span>
+</pre></div>
+</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<em>Click to reveal</em><div class="summary-down docutils">
+<svg aria-hidden="true" class="octicon octicon-chevron-down" height="24" version="1.1" viewbox="0 0 24 24" width="24"><path d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z" fill-rule="evenodd"></path></svg></div>
+<div class="summary-up docutils">
+<svg aria-hidden="true" class="octicon octicon-chevron-up" height="24" version="1.1" viewbox="0 0 24 24" width="24"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>the cut <span class="k">in</span> the hat
+</pre></div>
+</div>
+</div>
+</details><p>If the above answer surprises you, remember that <code class="docutils literal notranslate"><span class="pre">sed</span></code> only finds the first
+occurrence of a match and then moves on. If you want it to apply to all
+<em>global</em> occurrences, include the extra flag as <code class="docutils literal notranslate"><span class="pre">sed 's/find/replace/g'</span></code>.</p>
+<p>By default, the result is directed to STDOUT, but we can reroute this to a
+file with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (overwrite) or <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> (append).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ cat input.txt <span class="p">|</span> sed <span class="s1">'s/find/replace/'</span> &gt;&gt; output.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="regular-expressions">
+<h3>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">#</a></h3>
+<p>We can match more complicated patterns. Some examples:</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">^c</span></code></p></td>
+<td><p>only occurrences of <em>c</em> that begin a newline</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">txt$</span></code></p></td>
+<td><p>the exact sequence <em>txt</em> that occurs at the end of a line</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[aeiou]</span></code></p></td>
+<td><p>any single character in the list <em>a, e, i, o, u</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[^aeiou]</span></code></p></td>
+<td><p>any single character except <em>a, e, i, o, u</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a?</span></code></p></td>
+<td><p>zero or one of <em>a</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a+</span></code></p></td>
+<td><p>one or more or <em>a</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a{3}</span></code></p></td>
+<td><p>exactly 3 of <em>a</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>`a{3,}</p></td>
+<td><p>3 or more of <em>a</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>any character</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Under extended regex syntax (<code class="docutils literal notranslate"><span class="pre">-E</span></code> flag), you may also use capturing groups by
+enclosing your desired matching expression in <code class="docutils literal notranslate"><span class="pre">()</span></code>. This allows you to
+rearrange groups of matches in your <code class="docutils literal notranslate"><span class="pre">replace</span></code> syntax by referencing the
+matching groups.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://www.regex101.com">Regex101</a>: helpful interactive construction syntax</p>
+</div>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>Look closely at the following example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ <span class="nb">echo</span> <span class="s2">"Smith, John"</span> <span class="p">|</span> sed -E <span class="s1">'s/(^.*), (.*$)/\2 \1/'</span> 
+</pre></div>
+</div>
+<p>We are exploiting the format of <code class="docutils literal notranslate"><span class="pre">Last,</span> <span class="pre">First</span></code> to group together a syntax that
+looks for <code class="docutils literal notranslate"><span class="pre">chars</span></code> + <code class="docutils literal notranslate"><span class="pre">,</span></code> + <code class="docutils literal notranslate"> </code> + <code class="docutils literal notranslate"><span class="pre">chars</span></code>. The first matching group is defined as
+<code class="docutils literal notranslate"><span class="pre">^.*</span></code> (all characters from the start of the string), but only as it exists up
+to the next search criteria, which is a comma. We then explicitly include in
+our search the space after the comma and define another matching group <code class="docutils literal notranslate"><span class="pre">.*$</span></code>
+(all characters until end of string).</p>
+<p>Our <code class="docutils literal notranslate"><span class="pre">replace</span></code> expression is <code class="docutils literal notranslate"><span class="pre">\2</span> <span class="pre">\1</span></code>, meaning <em>display the second matching group in
+my previous expression, then a space, then the first matching group</em>. The result
+of this command is <code class="docutils literal notranslate"><span class="pre">John</span> <span class="pre">Smith</span></code></p>
+<p>If we want to write changes directly to our input file, we can operate <em>inline</em>
+with the <code class="docutils literal notranslate"><span class="pre">-i</span></code> flag and specify an extension for a backup file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search and replace input.txt, create input.txt.bk, overwrite original</span>
+~ $ sed -i <span class="s1">'.bk'</span> <span class="s1">'s/find/replace/'</span> input.txt
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search and replace input.txt, no backup, overwrite original</span>
+~ $ sed -i <span class="s1">''</span> <span class="s1">'s/find/replace/'</span> input.txt
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
 <p>Navigate to <code class="docutils literal notranslate"><span class="pre">~/Computing-Essentials</span></code> in a terminal and execute the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">~/Computing-Essentials $ sh commands</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ wget -O make-first-steps.sh https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh
+~/Computing-Essentials $ chmod u+x make-first-steps.sh <span class="o">&amp;&amp;</span> sh make-first-steps.sh
 </pre></div>
 </div>
+<p>The above commands download and execute a script that will create and populate
+a folder for this lesson.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Be mindful about blindly executing scripts you find online. Inspect any files
+you download with a text editor before executing from sources you don’t trust.</p>
+</div>
+<p>The new folder has many data files simulating measurements taken over many
+months. Each measurement is a simple spectrum represented by a series of
+(<code class="docutils literal notranslate"><span class="pre">wavelength</span>    <span class="pre">intensity</span></code>) pairs.</p>
 <p>Move to the newly created folder and view the contents with <code class="docutils literal notranslate"><span class="pre">ls</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">~/Computing-Essentials $ cd first-steps</span>
-<span class="go">~/Computing-Essentials/first-steps $ ls</span>
-<span class="go"> 122021_results.csv 122121_results.csv summary.csv 122021_high-temp_results.csv</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ <span class="nb">cd</span> first-steps
+~/Computing-Essentials/first-steps $ ls
 </pre></div>
 </div>
-<div class="section" id="create-and-rename">
-<h3>Create and rename<a class="headerlink" href="#create-and-rename" title="Permalink to this headline">#</a></h3>
-<ol class="simple">
-<li><p>Make a new folder somewhere:</p></li>
-<li></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<div class="section" id="rename-files">
+<h3>Rename files<a class="headerlink" href="#rename-files" title="Permalink to this headline">#</a></h3>
+<p>These files were named by your colleague without careful consideration and
+subsequently lumped into one directory. One immediately obvious problem we face
+is that the files do not sort naturally by date. Renaming these dates by hand
+would be tedious, but we can solve this problem with some regular expression
+matching.</p>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Change all dates in the filenames from MMDDYY to YYYYMMDD.</p>
+</div>
+</div>
+<div class="section" id="organize-files">
+<h3>Organize files<a class="headerlink" href="#organize-files" title="Permalink to this headline">#</a></h3>
+<p>We may also notice that some of the data files have special acquisition
+parameter circumstances that make them distinct from other files. Consider it
+good practice to have identifying remarks in the filename; aim to keep the
+level of remarks from most-to-least general going from left-to-right in the
+filename. We may anticipate an analysis that makes use of data acquired with
+similar parameters.</p>
+<p>To make it easier for us to find this data when we need it, let’s restructure
+the directory to move similarly acquired data into an identifiable folder for
+easier browsing.</p>
+<p>We’ll also keep the verbose filenames as a measure of
+redundancy even though the information will now be duplicated in the folder
+structure. Let’s also agree on a naming slug so that all files have a
+similarly-patterned name for any further pattern matching we may do in the
+future.</p>
+<div class="topic">
+<p class="topic-title">Task</p>
+<ul class="simple">
+<li><p>Move data into low-temperature and high-temperature folders.</p></li>
+<li><p>Include low-temp descriptor in regular filenames for extra clarity.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="identify-special-files">
+<h3>Identify special files<a class="headerlink" href="#identify-special-files" title="Permalink to this headline">#</a></h3>
+<p>Maintenance makes routine cleaning stops around the lab to pick up waste. When
+someone comes in to collect waste, the stray light from the hallway causes the
+counts in the detector to increase slightly. Normally, these operations happen
+at night when nobody is collecting data, but you remember that some of the
+acquisitions were running overnight. Unfortunately, the timestamps of these
+acquisitions were lost when you pulled this data from a backup drive, as the
+file timestamps now reflect when you last imported them from the archive.</p>
+<p>This is not a problem. You know you can look for patterns in your files to
+detect values greater than some threshold. You know for certain that during the
+month of March you did not have any overnight runs, so you can look for typical
+spectrometer values for all runs in this date range.</p>
+<p>For now, let’s assume you already figured out that the maximum signal you were
+getting did not go above 356 counts in this time. Use this as a discriminator
+to find the data, and thus the night(s), that you were collecting data when
+someone entered the room.</p>
+<p>You may use the <code class="docutils literal notranslate"><span class="pre">grep</span></code> command to find the file. The general syntax is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ grep -l pattern file1 file2 ...
 </pre></div>
+</div>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Find files that have above-average spikes in their spectra.</p>
+</div>
+</div>
+<div class="section" id="write-a-script">
+<h3>Write a script<a class="headerlink" href="#write-a-script" title="Permalink to this headline">#</a></h3>
+<p>You decide that you don’t want to learn these commands every six months when
+you get a large enough dataset to have to sit down and clean. You can assemble
+the commands into a plain text file and make them executable from the shell by
+invoking the filename. Typical filenames usually end in <code class="docutils literal notranslate"><span class="pre">.sh</span></code> for bash
+execution, but the extension may be left off entirely if you follow the steps
+below.</p>
+<p>Create and edit a file called <code class="docutils literal notranslate"><span class="pre">clean-data</span></code>. At the top of the file, insert a
+<em>shebang</em> that tells the terminal what program you will eventually want to
+handle the execution of this file. For now, this will be <code class="docutils literal notranslate"><span class="pre">bash</span></code>. We do this
+with the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!usr/bin/env bash</span>
+<span class="c1"># Author: Your name</span>
+<span class="c1"># Description: Simple sentence of what this file will do</span>
+
+<span class="c1"># Insert terminal commands here</span>
+</pre></div>
+</div>
+<p>The <em>Author</em> and <em>Description</em> notes are not strictly necessary, but if you
+plan to share this with your colleagues, you may want credit for your insight
+(or blame for your lack of insight). It is good practice to briefly mention the
+objectives of the script for the benefit of those who may expand on your script
+next, including you six months from now.</p>
+<p>After you copy your commands and save your file, you’ll need to tell your
+machine that this file is executable. Do so with the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ chmod u+x clean-data
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command changes modifications so that the current user <code class="docutils literal notranslate"><span class="pre">u</span></code> has an
+additional execution permission <code class="docutils literal notranslate"><span class="pre">+x</span></code> on the following file. You can tell if
+this was done properly by inspecting the file with <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> from the current
+directory.</p>
+<p>You should see ten flags to the left of the filename, along with other file
+data. The left-most flag is either <code class="docutils literal notranslate"><span class="pre">-</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> to indicate a <em>file</em> or
+<em>directory</em>. The next nine flags are <em>read</em>, <em>write</em>, and <em>execute</em>
+permissions for user, group, and other, respectively. Note that <em>user</em> refers
+to the currently logged-in user on the machine.</p>
+<p>If the above command was executed properly, you should see <code class="docutils literal notranslate"><span class="pre">-rwx</span></code> as the first
+four flags of <code class="docutils literal notranslate"><span class="pre">clean-data</span></code>. From here, you can invoke the file from the
+terminal at the same working directory as you completed these exercises.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ sh clean-data
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Write a simple script to complete the above tasks in one step.</p>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Challenge</p>
+<p>Allow for the script to accept an argument from the command line to represent
+the directory for which the organization should take place. This would allow
+you to exclude files that you already organized.</p>
+<p>Example usage: <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">clean-data</span> <span class="pre">unsorted/*.txt</span></code></p>
+<p>Intended result: only rename and move .txt files that exist in an unsorted
+directory</p>
 </div>
 </div>
 </div>
@@ -331,29 +644,24 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../../docs/formatting.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Formatting</div>
-              </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="../../docs/organize-data.html">
+          
+          <a class="prev-page" href="../../docs/getting-started.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Organize Data</div>
+                <div class="title">Getting Started</div>
                 
               </div>
             </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022 David Curie
+            </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
@@ -381,9 +689,24 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">First Steps</a><ul>
-<li><a class="reference internal" href="#terminal">Terminal</a></li>
+<li><a class="reference internal" href="#terminal">Terminal</a><ul>
+<li><a class="reference internal" href="#file-management">File management</a><ul>
+<li><a class="reference internal" href="#ls-and-cd">ls and cd</a></li>
+<li><a class="reference internal" href="#mv-and-cp">mv and cp</a></li>
+<li><a class="reference internal" href="#mkdir">mkdir</a></li>
+<li><a class="reference internal" href="#rm">rm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#find-and-replace">Find and Replace</a></li>
+<li><a class="reference internal" href="#regular-expressions">Regular Expressions</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#instructions">Instructions</a><ul>
-<li><a class="reference internal" href="#create-and-rename">Create and rename</a></li>
+<li><a class="reference internal" href="#rename-files">Rename files</a></li>
+<li><a class="reference internal" href="#organize-files">Organize files</a></li>
+<li><a class="reference internal" href="#identify-special-files">Identify special files</a></li>
+<li><a class="reference internal" href="#write-a-script">Write a script</a></li>
 </ul>
 </li>
 </ul>
