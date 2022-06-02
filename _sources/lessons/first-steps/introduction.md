@@ -21,7 +21,7 @@ our computer, but to learn the basic vocabulary enough to ask for directions.
 The most common file system management tools we will need in the terminal is
 for bulk transport of files and for pattern matching.
 
-The basic syntax for commands is `cmd -<options> -<arguments>`. Options are
+The basic syntax for commands is `cmd -<options> <arguments>`. Options are
 also sometimes called _flags_ and alter the default behavior of a command. You
 can set default options for basic commands on your machine by creating an
 _alias_ of the command and storing that alias in a runtime configuration for
@@ -132,7 +132,7 @@ sed -options 's/find/replace/' input_file
 ```
 
 Here, `find` and `replace` are placeholders for regular expressions used to
-match your desired text; the contents of the first `find` and replaced with
+match your desired text; the contents of the first `find` are replaced with
 `replace`. `sed` also accepts piped input, so we can test simple strings with
 `sed` to learn its behavior.
 
@@ -220,7 +220,7 @@ with the `-i` flag and specify an extension for a backup file.
 Navigate to `~/Computing-Essentials` in a terminal and execute the following commands:
 
 ```bash
-~/Computing-Essentials $ wget -O make-first-steps.sh https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh
+~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh > make-first-steps.sh
 ~/Computing-Essentials $ chmod u+x make-first-steps.sh && sh make-first-steps.sh
 ```
 

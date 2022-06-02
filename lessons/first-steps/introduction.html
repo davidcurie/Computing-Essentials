@@ -281,7 +281,7 @@ one-line commands enough to save us hours of tedious file management.</p>
 our computer, but to learn the basic vocabulary enough to ask for directions.</p>
 <p>The most common file system management tools we will need in the terminal is
 for bulk transport of files and for pattern matching.</p>
-<p>The basic syntax for commands is <code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">-&lt;options&gt;</span> <span class="pre">-&lt;arguments&gt;</span></code>. Options are
+<p>The basic syntax for commands is <code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">-&lt;options&gt;</span> <span class="pre">&lt;arguments&gt;</span></code>. Options are
 also sometimes called <em>flags</em> and alter the default behavior of a command. You
 can set default options for basic commands on your machine by creating an
 <em>alias</em> of the command and storing that alias in a runtime configuration for
@@ -374,7 +374,7 @@ editor</em>), but other useful tools are <code class="docutils literal notransla
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code> are placeholders for regular expressions used to
-match your desired text; the contents of the first <code class="docutils literal notranslate"><span class="pre">find</span></code> and replaced with
+match your desired text; the contents of the first <code class="docutils literal notranslate"><span class="pre">find</span></code> are replaced with
 <code class="docutils literal notranslate"><span class="pre">replace</span></code>. <code class="docutils literal notranslate"><span class="pre">sed</span></code> also accepts piped input, so we can test simple strings with
 <code class="docutils literal notranslate"><span class="pre">sed</span></code> to learn its behavior.</p>
 <p>What do you think the result of the following command will be?</p>
@@ -479,7 +479,7 @@ with the <code class="docutils literal notranslate"><span class="pre">-i</span><
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
 <p>Navigate to <code class="docutils literal notranslate"><span class="pre">~/Computing-Essentials</span></code> in a terminal and execute the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ wget -O make-first-steps.sh https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh &gt; make-first-steps.sh
 ~/Computing-Essentials $ chmod u+x make-first-steps.sh <span class="o">&amp;&amp;</span> sh make-first-steps.sh
 </pre></div>
 </div>
