@@ -1,0 +1,900 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="&lt;no title&gt;" href="draft_3.html" />
+
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+        <title>Git - Computing Essentials</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #fbf1c7;
+  --color-code-foreground: black;
+  --color-problematic: #cc241d;
+  --color-foreground-primary: #282828;
+  --color-foreground-secondary: #3c3836;
+  --color-foreground-muted: #504945;
+  --color-foreground-border: #665c54;
+  --color-background-primary: #f9f5d7;
+  --color-background-secondary: #fbf1c7;
+  --color-background-hover: #d5c4a1;
+  --color-background-hover--transparent: #d5c4a1;
+  --color-background-border: #a89984;
+  --color-background-item: #a89984;
+  --color-announcement-background: #282828dd;
+  --color-announcement-text: #fbf1c7;
+  --color-brand-primary: #79740e;
+  --color-brand-content: #458588;
+  --color-highlight-on-target: #ebdbb2;
+  --color-highlighted-background: #fabd2f;
+  --color-guilabel-background: #b1628680;
+  --color-guilabel-border: #b1628680;
+  --color-admonition-title: #b16286;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-problematic: #fb4934;
+  --color-foreground-primary: #fbf1c7;
+  --color-foreground-secondary: #ebdbb2;
+  --color-foreground-muted: #d5c4a1;
+  --color-foreground-border: #bdae93;
+  --color-background-primary: #282828;
+  --color-background-secondary: #1d2021;
+  --color-background-hover: #3c3836;
+  --color-background-hover--transparent: #3c3836;
+  --color-background-border: #928374;
+  --color-background-item: #928374;
+  --color-announcement-background: #fbf1c7dd;
+  --color-announcement-text: #282828;
+  --color-brand-primary: #b8bb26;
+  --color-brand-content: #83a598;
+  --color-highlight-on-target: #1d2021;
+  --color-highlighted-background: #d79921;
+  --color-guilabel-background: #d3869b80;
+  --color-guilabel-border: #d3869b80;
+  --color-admonition-title: #d3869b80;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-problematic: #fb4934;
+  --color-foreground-primary: #fbf1c7;
+  --color-foreground-secondary: #ebdbb2;
+  --color-foreground-muted: #d5c4a1;
+  --color-foreground-border: #bdae93;
+  --color-background-primary: #282828;
+  --color-background-secondary: #1d2021;
+  --color-background-hover: #3c3836;
+  --color-background-hover--transparent: #3c3836;
+  --color-background-border: #928374;
+  --color-background-item: #928374;
+  --color-announcement-background: #fbf1c7dd;
+  --color-announcement-text: #282828;
+  --color-brand-primary: #b8bb26;
+  --color-brand-content: #83a598;
+  --color-highlight-on-target: #1d2021;
+  --color-highlighted-background: #d79921;
+  --color-guilabel-background: #d3869b80;
+  --color-guilabel-border: #d3869b80;
+  --color-admonition-title: #d3869b80;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../docs/intro.html"><div class="brand">Computing Essentials</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../docs/intro.html">
+  
+  
+  <span class="sidebar-brand-text">Computing Essentials</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/getting-started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../first-steps/introduction.html">First Steps</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Git</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <div class="tex2jax_ignore mathjax_ignore section" id="git">
+<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
+<div class="admonition-prerequisites admonition">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://jlord.us/git-it">Git-It</a> tutorial</p></li>
+<li><p>First Steps</p></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title">Objectives</p>
+<ul class="simple">
+<li><p>Document a project</p></li>
+<li><p>Collaborate on a scientific paper</p></li>
+</ul>
+</div>
+<div class="section" id="first-steps-extension">
+<h2>First Steps extension<a class="headerlink" href="#first-steps-extension" title="Permalink to this headline">#</a></h2>
+<p>The <em>First Steps</em> lesson had you move files in your filesystem in some
+non-trivial ways. We overwrote filenames with presumably more descriptive
+names, but what if we later want to edit the names further and forgot what the
+original names of those files were?</p>
+<p>One sensible thing to do would be to create a backup of the existing files as
+they existed before we executed our renaming script. Creating a physical backup
+as a duplicate folder on our filesystem is a good first-order effort, but this
+can be wasteful if we have exceptionally large folders. <mark>A backup of your
+data should exist in some location other than where you are working on the
+files</mark>, but for the purposes of this example we’ll demonstrate how to
+document the changes that are more local to your workflow.</p>
+<div class="section" id="creating-a-git-repository">
+<h3>Creating a Git repository<a class="headerlink" href="#creating-a-git-repository" title="Permalink to this headline">#</a></h3>
+<p>We’ll begin by restarting our <em>First Steps</em> exercise from a blank slate. Let’s
+backup our existing <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder and recreate an empty <code class="docutils literal notranslate"><span class="pre">first-steps</span></code>
+folder to properly document our project.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ mv first-steps first-steps.bk
+~/Computing-Essentials $ mkdir first-steps
+</pre></div>
+</div>
+<p>Navigate to our new blank directory and initialize a local Git repository.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ <span class="nb">cd</span> first-steps
+~/Computing-Essentials/first-steps $ git init
+Initialized empty Git repository <span class="k">in</span> /Users/YOURNAME/Computing-Essentials/first-steps/.git/
+</pre></div>
+</div>
+<p>From here on out, any changes to files or directories inside this new
+<code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder will be tracked by Git, but we need to know how to ask Git
+for the changes.</p>
+</div>
+<div class="section" id="populate-initial-files">
+<h3>Populate initial files<a class="headerlink" href="#populate-initial-files" title="Permalink to this headline">#</a></h3>
+<p>Let’s pretend that we’ll eventually make this data public. Find an appropriate
+<a class="reference external" href="https://choosealicense.com">licence</a> and place the text into a file called <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> (no
+extension). We’ll create a GNU GPL v3 license for this example by copying the
+raw text from the license in this project’s source repository and writing it to
+a file called <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you create a repository directly on GitHub, you can select your
+own license from a dropdown menu. The following command will then be obsolete.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/LICENSE &gt; LICENSE
+</pre></div>
+</div>
+<p>Let’s also add a blank README file that we can later use to document notes to
+our end users.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ touch README
+</pre></div>
+</div>
+<p>Let’s see the effects of the changes we made to our repository by running the
+following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include <span class="k">in</span> what will be committed<span class="o">)</span>
+        LICENSE
+        README
+
+nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span>
+</pre></div>
+</div>
+<p>This means Git knows files have been added (under untracked files), but it’s
+our job to tell Git to start tracking these files. We can then incorporate
+tracked files as snapshots of the file as they exist at the time they are added
+to a commit.</p>
+</div>
+<div class="section" id="add-and-commit-changes">
+<h3>Add and commit changes<a class="headerlink" href="#add-and-commit-changes" title="Permalink to this headline">#</a></h3>
+<p>Let’s make a checkpoint of the state of our folder as it exists after our
+LICENSE and (blank) README. We can do this with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> for each file
+that we want to save. The command can be run once for each file, or you can
+list multiple files after <code class="docutils literal notranslate"><span class="pre">add</span></code>. You can also add all files with the shortcut
+notation <code class="docutils literal notranslate"><span class="pre">.</span></code> (period).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git add .
+</pre></div>
+</div>
+<p>Nothing on the terminal tells us if this executed properly, but we can
+re-inspect our repository.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git rm --cached &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+        new file:   LICENSE
+        new file:   README
+</pre></div>
+</div>
+<p>We see that our two files are newly added to the staging directory. We can
+group these changes to our directory as one searchable collection of
+modifications called a <em>commit</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git commit
+</pre></div>
+</div>
+<p>Executing the previous command will bring up a temporary text file with some
+populated information about the changes we are about to save. The first line of
+this file will be displayed as a message in our log. We’ll give it a short,
+descriptive message; save; and close the file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Start of first-steps lesson
+<span class="c1"># Please enter the commit message for your changes. Lines starting</span>
+<span class="c1"># with '#' will be ignored, and an empty message aborts the commit.</span>
+<span class="c1">#</span>
+<span class="c1"># On branch main</span>
+<span class="c1">#</span>
+<span class="c1"># Initial commit</span>
+<span class="c1">#</span>
+<span class="c1"># Changes to be committed:</span>
+<span class="c1"># new file:   LICENSE</span>
+<span class="c1"># new file:   README</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inspect-history">
+<h3>Inspect History<a class="headerlink" href="#inspect-history" title="Permalink to this headline">#</a></h3>
+<p>To inspect previous commits, we can look at the history with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>. By
+default, the log will contain the full commit hash of each commit, along with
+the author, the date of commit, and the commit message file like the one we
+just saved in the previous step.</p>
+<p>We can simplify the output by listing only the first line of our commit
+message. If we structure our commit messages thoughtfully, these messages will
+tell us a high-level overview of the changes we made as our project evolved.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git log --oneline
+5c8de16 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Start of first-steps lesson
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Commit hashes are unique 40-character strings but are often distinct enough in
+their first several characters for Git to differentiate between two commits by their
+leading header. Expect different hash abbreviations than the value you see in
+this example (<code class="docutils literal notranslate"><span class="pre">5c8de16</span></code>) and future examples.</p>
+</div>
+</div>
+<div class="section" id="make-further-changes">
+<h3>Make further changes<a class="headerlink" href="#make-further-changes" title="Permalink to this headline">#</a></h3>
+<p>Now that our initial progress is saved as a commit, let’s repopulate our lesson
+directory and save the result of that step as a new commit.</p>
+<p>If you still have the <code class="docutils literal notranslate"><span class="pre">make-first-steps.sh</span></code> file from the previous lesson, you
+may run it again to populate the <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder with dummy files.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ <span class="nb">cd</span> ..
+~/Computing-Essentials $ sh make-first-steps.sh
+</pre></div>
+</div>
+<p>Otherwise, download the script again and change permissions to be executable as
+before.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ <span class="nb">cd</span> ..
+~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh &gt; make-first-steps.sh
+~/Computing-Essentials $ chmod u+x make-first-steps.sh <span class="o">&amp;&amp;</span> sh make-first-steps.sh
+</pre></div>
+</div>
+<p>Our <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder should now be populated with dummy files. Let’s
+navigate back into the directory and view the status of Git.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ <span class="nb">cd</span> first-steps
+~/Computing-Essentials/first-steps $ git status
+On branch main
+Untracked files:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include what will be committed<span class="o">)</span>
+        010122_results.txt
+        010222_results.txt
+        ⋮
+        summary.csv
+</pre></div>
+</div>
+<p>Here, we see numerous untracked files that we want to put under version
+control. Let’s add them to the staging directory all at once and commit them
+with a useful message.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git add .
+~/Computing-Essentials/first-steps $ git commit -m <span class="s2">"Populate with dummy files"</span>
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">-m</span></code> flag is a shorthand way of writing the commit message without
+having to open and save the commit message file in an editor.</p>
+<p>If we inspect our git repository with the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> command, we’ll see both
+commits.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git log --oneline
+633ff6f <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Populate with dummy files
+5c8de16 Start of first-steps lesson
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-first-steps">
+<h3>Complete First Steps<a class="headerlink" href="#complete-first-steps" title="Permalink to this headline">#</a></h3>
+<p>We can now make changes to our directory structure with the assurance that we
+can undo these changes if they are destructive.</p>
+<p>Copy your <code class="docutils literal notranslate"><span class="pre">clean-data</span></code> script from the previous exercise to this folder.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ cp ../first-steps.bk/clean-data .
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The extra <code class="docutils literal notranslate"><span class="pre">.</span></code> at the end is shorthand for <em>this directory</em>. We are copying a
+file from a directory located one level back from where we are <code class="docutils literal notranslate"><span class="pre">../</span></code> into where
+we currently are <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
+</div>
+<p>If you do not have a working copy of your script, you can find an example
+solution <a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/solution.sh">here</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Remember to <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">u+x</span> <span class="pre">clean-data</span></code> if you copied the file from online.</p>
+</div>
+<p>Once copied, let’s also commit this additional script as its own incremental
+change to our project.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git add clean-data
+~/Computing-Essentials/first-steps $ git commit -m <span class="s2">"Add script to reorganize files"</span>
+</pre></div>
+</div>
+<p>Execute our script to rename files and move them into their new folders.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ sh clean-data
+</pre></div>
+</div>
+<p>See the changes we made.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git status
+On branch main
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git restore --staged &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+        renamed:    081121_high-temp_results.txt -&gt; high-temp/2021-08-11_high-temp_result.txt
+        ⋮
+        renamed:    080121_results.txt -&gt; room-temp/2021-08-01_room-temp_results.txt
+        ⋮
+</pre></div>
+</div>
+<p>Then save these changes with a commit.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git add .
+~/Computing-Essentials/first-steps $ git commit -m <span class="s2">"Reorganize files"</span>
+<span class="o">[</span>main 73bef22<span class="o">]</span> Reorganize files
+<span class="m">276</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+⋮
+</pre></div>
+</div>
+<p>The extra lines after the commit confirm for us what was included in the
+commit. We see above that 276 files were renamed, but no lines of text were
+inserted or deleted in any files.</p>
+</div>
+<div class="section" id="undo-a-change">
+<h3>Undo a change<a class="headerlink" href="#undo-a-change" title="Permalink to this headline">#</a></h3>
+<p>Suppose we had improperly renamed our files in our bash script, say, because our
+regex matches were improperly formatted. We could delete our files and start
+again from a backup point, but if that backup point is in a hard drive in
+an office down the hall this becomes a minor annoyance, especially if we are
+experimenting with our script iteration.</p>
+<p>Git provides a way for us to undo to various degrees.</p>
+<div class="section" id="undo-a-staged-change">
+<h4>Undo a staged change<a class="headerlink" href="#undo-a-staged-change" title="Permalink to this headline">#</a></h4>
+<p>If you haven’t committed your changes, all the edits you’ve made across your
+repository can be unstaged. Unstaging a file means that the edits since its
+last commit will be discarded. Edits include file deletions, renames, and
+new line writes to files. Running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span> <span class="pre">--staged</span> <span class="pre">&lt;file&gt;...</span></code> will
+revert the file back to the state of its last commit. Runnit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span> <span class="pre">--staged</span> <span class="pre">.</span></code> will undo all changes, including restoring deleted files and
+renaming them back to their original name.</p>
+</div>
+<div class="section" id="resetting-to-a-previous-commit">
+<h4>Resetting to a previous commit<a class="headerlink" href="#resetting-to-a-previous-commit" title="Permalink to this headline">#</a></h4>
+<p>Suppose you don’t realize your blunder until after you’ve already committed
+your mistake. You can move back in history with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code>. Git will complain
+if you have uncommitted changes in your staging directory before running a
+reset. If you have changes you want to keep, you can stash them without
+resorting to a proper commit, but for now let’s assume you recently committed,
+have your working directory clean, and immediately realized your mistake.</p>
+<p>A reset can be <code class="docutils literal notranslate"><span class="pre">--soft</span></code>, <code class="docutils literal notranslate"><span class="pre">--mixed</span></code>, or <code class="docutils literal notranslate"><span class="pre">--hard</span></code>.</p>
+<p>A <strong>soft</strong> reset discards the last commit but keeps the files staged as they were
+just before the commit. This is useful if you want to add something extra to
+the previous commit by including an additional file or removing one specific
+file from among many staged files. Files will not be changed or undone with
+this approach.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you only want to modify the previous commit message or make a simple change
+to the previous commit, consider <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code>.</p>
+</div>
+<p>A <strong>mixed</strong> reset is the default reset and keeps files as they were after you
+edited them but before you added them to the staging directory. This preserves
+the changes you made up to the commit you are checking out but lets you
+restructure your staging directory from scratch. This is useful if you have
+mostly good code but you need to tweak a file or series of files before staging
+them again (this time with the new and improved edits).</p>
+<p>A <strong>hard</strong> reset goes one step further and discards all changes in that commit.
+This is useful if you made breaking changes and want to get back to a working
+state, defined as the state of affairs created by the previous commit as
+measured from the one you are checking out.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After a hard reset, any uncommitted changes will be discarded. This means if
+you have files that you keep uncommitted because you don’t yet want them
+tracked or because you are waiting to commit them in a logical order, they will
+also be discarded when you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span> <span class="pre">&lt;commit&gt;</span></code>.</p>
+</div>
+<p>Think of a working session as the following timeline of events:</p>
+<ol class="simple">
+<li><p>State of affairs from previous commit (working tree clean)</p></li>
+<li><p>Make changes to files</p></li>
+<li><p>Stage files</p></li>
+<li><p>Commit</p></li>
+</ol>
+<p>The results of steps 1–3 are stored in every commit with a commit hash. We can
+access each step of a commit with a reset:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git reset --soft &lt;commit&gt; <span class="c1"># Go to step 3 of specified commit</span>
+git reset --mixed &lt;commit&gt; <span class="c1"># Go to step 2 of specified commit</span>
+git reset --hard &lt;commit&gt; <span class="c1"># Go to step 1 of specified commit</span>
+
+git reset &lt;commit&gt; <span class="c1"># Default settings, go to step 2 of specified commit</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;commit&gt;</span></code> hash can be found in the log and may be abbreviated to 7
+characters.</p>
+<p>If you want to move back a specified number of commits from the current HEAD,
+you can replace the commit hash with <code class="docutils literal notranslate"><span class="pre">HEAD~N</span></code>.</p>
+</div>
+<div class="section" id="checkout-a-previous-commit">
+<h4>Checkout a previous commit<a class="headerlink" href="#checkout-a-previous-commit" title="Permalink to this headline">#</a></h4>
+<p>If we want to inspect the state of our repository at a previous point but keep
+our existing changes documented on our main branch, we can <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>
+previous files or commits. This is useful if you want to prepare your
+filesystem for a new branch or feature and you want it to take effect from some
+previous starting point.</p>
+<p>From a filesystem point of view, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit&gt;</span></code> is
+identical to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span> <span class="pre">&lt;commit&gt;</span></code> except that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> leaves alone the
+branch you started from when you ran this command. A warning will inform you
+that you are in a <em>detached head</em> state, which means that this is only one part
+of an intended two-part process. The second process is to commit the changes
+you want to a new branch.</p>
+<p>We will stay away from checking out entire commits, but we will see <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>
+again when we want to grab files from other branches or from earlier commits
+when we don’t want to undo everything along the way.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout">The difference between checkout and reset</a><br/>
+<a class="reference external" href="https://stackoverflow.com/questions/3528245/whats-the-difference-between-git-reset-mixed-soft-and-hard">The difference between reset –soft, –mixed, –hard</a></p>
+</div>
+</div>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h4>
+<p>Let’s inspect our directory at this point in the lesson.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git log --oneline
+73bef22 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Reorganize files
+6adfa40 Add script to reorganize files
+633ff6f Populate with dummy files
+5c8de16 Start of first-steps lesson
+~/Computing-Essentials/first-steps $ ls
+LICENSE      README       clean-data   high-temp/   room-temp/   summary.csv
+</pre></div>
+</div>
+<p>We can see that our <code class="docutils literal notranslate"><span class="pre">high-temp/</span></code> and <code class="docutils literal notranslate"><span class="pre">room-temp/</span></code> directories exist and that
+none of our original filenames are cluttering our main directory. Let’s
+assume that the files were renamed and sorted correctly.</p>
+<p>We can also see from the log that our <em>Reorganize files</em> step has already been
+committed. Let’s undo the results of our organization script <code class="docutils literal notranslate"><span class="pre">clean-data</span></code>.</p>
+<p><strong>Question</strong>: From the information provided above, what command can we run that would
+completely revert our directory where the files exist but the filenames are not
+renamed or sorted.</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Click to reveal<div class="summary-down docutils">
+<svg aria-hidden="true" class="octicon octicon-chevron-down" height="24" version="1.1" viewbox="0 0 24 24" width="24"><path d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z" fill-rule="evenodd"></path></svg></div>
+<div class="summary-up docutils">
+<svg aria-hidden="true" class="octicon octicon-chevron-up" height="24" version="1.1" viewbox="0 0 24 24" width="24"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git reset --hard HEAD~1
+</pre></div>
+</div>
+<p class="card-text"><strong>Explanation</strong>: Commit <code class="docutils literal notranslate"><span class="pre">6adfa40</span></code> already had a state of affairs where the
+files were populated in the directory and the script was written but not yet
+executed. We want to discard all changes that were made in the final commit
+(<code class="docutils literal notranslate"><span class="pre">HEAD</span></code>), so we reset to Step 1 of commit <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code> (one commit prior).</p>
+</div>
+</details></div>
+<div class="section" id="undoing-a-reset">
+<h4>Undoing a reset<a class="headerlink" href="#undoing-a-reset" title="Permalink to this headline">#</a></h4>
+<p>What if you reset to a previous commit but realize you went back one commit too
+far?</p>
+<p>All is not lost. You can reset to a <em>forward</em> position in the commit history
+just the same as you can reset to a backward position. All you need is the
+commit hash of where you want to advance.</p>
+<p>Let’s move back to our state of affairs before our reset. For clarity, we want
+the files renamed and sorted back into their folders. We’ll assume we are at
+commit <code class="docutils literal notranslate"><span class="pre">6adfa40</span></code>, which is one commit behind our desired <code class="docutils literal notranslate"><span class="pre">73bef22</span></code>.</p>
+<p>Much like <code class="docutils literal notranslate"><span class="pre">HEAD~N</span></code> was a shorthand for <em>go back N commits</em>, <code class="docutils literal notranslate"><span class="pre">HEAD@{N}</span></code> is
+shorthand for <em>go ahead N commits</em>, so long as it exists and follows from the
+current branch.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git reset --hard HEAD@<span class="o">{</span><span class="m">1</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-a-scientific-paper">
+<h2>Writing a scientific paper<a class="headerlink" href="#writing-a-scientific-paper" title="Permalink to this headline">#</a></h2>
+<p>In a related topic, we may use Git constructively to keep track of drafts of a
+paper, so long as we agree to write it in a plain text format like <span class="math notranslate nohighlight">\(\LaTeX\)</span> or
+markdown. Let’s walk through a typical workflow</p>
+<p>We’ll start by creating a new folder for our paper.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ <span class="nb">cd</span> ..
+~/Computing-Essentials $ mkdir git-paper <span class="o">&amp;&amp;</span> <span class="nb">cd</span> git-paper
+~/Computing-Essentials/git-paper $ git init
+</pre></div>
+</div>
+<p>We’ll then add a blank document and set it under version control. For this
+example, we’ll use a plain markdown file called <code class="docutils literal notranslate"><span class="pre">main.md</span></code> for our draft.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ touch main.md
+~/Computing-Essentials/git-paper $ git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Initial commit"</span>
+<span class="o">[</span>main <span class="o">(</span>root-commit<span class="o">)</span> 53a9abb<span class="o">]</span> Initial commit
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> main.md
+</pre></div>
+</div>
+<div class="section" id="track-changes">
+<h3>Track changes<a class="headerlink" href="#track-changes" title="Permalink to this headline">#</a></h3>
+<p>We’ll start by overwriting the contents of <code class="docutils literal notranslate"><span class="pre">main.md</span></code> with a dummy file that
+will represent our first draft. You can inspect the file before you download it
+<a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/git/draft_1.md">here</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_1.md &gt; main.md
+</pre></div>
+</div>
+<p>Then commit these changes to our repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add opening paragraph"</span>
+</pre></div>
+</div>
+<p>We’ll repeat this for two more drafts.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_2.md &gt; main.md
+~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add conclusion paragraph"</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_3.md &gt; main.md
+~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Rewrite introduction"</span>
+</pre></div>
+</div>
+<p>We can mimic the <em>Track Changes</em> feature of Word by looking at the difference
+of two files in Git. The general syntax for this purpose is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> $ git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt;...&lt;commit&gt; -- <span class="o">[</span>&lt;path&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">commit</span></code> values represent the <em>start</em> and <em>end</em> commits you want the
+difference between and <code class="docutils literal notranslate"><span class="pre">[&lt;path&gt;]</span></code> is the file(s) to inspect.</p>
+<div class="section" id="compare-two-earlier-drafts">
+<h4>Compare two earlier drafts<a class="headerlink" href="#compare-two-earlier-drafts" title="Permalink to this headline">#</a></h4>
+<p>To view the difference between the first draft and the second draft, we need to
+first know the commits where those drafts were contained.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git log --oneline
+6872fc1 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Rewrite introduction
+69800c3 Add conclusion paragraph
+c951ed4 Add opening paragraph
+53a9abb Initial commit
+</pre></div>
+</div>
+<p>In our example, the drafts are stored at <code class="docutils literal notranslate"><span class="pre">HEAD~2</span></code> and <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code> for the first
+and second draft, respectively. We can see the line-by-line changes between the
+files displayed on the terminal.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ git diff HEAD~2...HEAD~1 -- main.md
+</pre></div>
+</div>
+<p>Here, we can see that the commit message logically corresponded to an
+additional paragraph appended to our first draft by noticing the newline
+additions.</p>
+</div>
+<div class="section" id="compare-all-changes">
+<h4>Compare all changes<a class="headerlink" href="#compare-all-changes" title="Permalink to this headline">#</a></h4>
+<p>If we want to see how the most recent draft has changed since a particular
+commit, we can leave off one of the <code class="docutils literal notranslate"><span class="pre">&lt;commit&gt;</span></code> specifiers; Git will
+automatically compare against <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git diff HEAD~2... -- main.md
+</pre></div>
+</div>
+<p>We see the results of <em>Add conclusion paragraph</em> and <em>Rewrite introduction</em>
+commits.</p>
+</div>
+<div class="section" id="save-changes-to-file">
+<h4>Save changes to file<a class="headerlink" href="#save-changes-to-file" title="Permalink to this headline">#</a></h4>
+<p>The terminal output is helpful if we want to see for ourselves the changes
+between versions, but if our advisor asks us to see the changes, we may decide
+to write this to a file.</p>
+<p>We can redirect the output to a file with <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">filename.ext</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ git diff HEAD~2 main.md &gt; v1-v3_comparison.txt
+</pre></div>
+</div>
+<p>We can then share the file <code class="docutils literal notranslate"><span class="pre">v1-v3_comparison.txt</span></code> file instead of <code class="docutils literal notranslate"><span class="pre">main.md</span></code> as
+it exists in its draft 3 form. More importantly, we don’t need to worry about
+keeping every iteration of draft, changes, and corrections from each editor
+because we know that these diff files can be generated from inside Git. This
+means we can safely delete the <code class="docutils literal notranslate"><span class="pre">v1-v3_comparison.txt</span></code> file after we’ve sent it,
+which keeps our directory clean.</p>
+</div>
+</div>
+<div class="section" id="collaborating-with-other-authors">
+<h3>Collaborating with other authors<a class="headerlink" href="#collaborating-with-other-authors" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+</div>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/git"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="draft_3.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">&lt;no title&gt;</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022 David Curie
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Git</a><ul>
+<li><a class="reference internal" href="#first-steps-extension">First Steps extension</a><ul>
+<li><a class="reference internal" href="#creating-a-git-repository">Creating a Git repository</a></li>
+<li><a class="reference internal" href="#populate-initial-files">Populate initial files</a></li>
+<li><a class="reference internal" href="#add-and-commit-changes">Add and commit changes</a></li>
+<li><a class="reference internal" href="#inspect-history">Inspect History</a></li>
+<li><a class="reference internal" href="#make-further-changes">Make further changes</a></li>
+<li><a class="reference internal" href="#complete-first-steps">Complete First Steps</a></li>
+<li><a class="reference internal" href="#undo-a-change">Undo a change</a><ul>
+<li><a class="reference internal" href="#undo-a-staged-change">Undo a staged change</a></li>
+<li><a class="reference internal" href="#resetting-to-a-previous-commit">Resetting to a previous commit</a></li>
+<li><a class="reference internal" href="#checkout-a-previous-commit">Checkout a previous commit</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#undoing-a-reset">Undoing a reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-a-scientific-paper">Writing a scientific paper</a><ul>
+<li><a class="reference internal" href="#track-changes">Track changes</a><ul>
+<li><a class="reference internal" href="#compare-two-earlier-drafts">Compare two earlier drafts</a></li>
+<li><a class="reference internal" href="#compare-all-changes">Compare all changes</a></li>
+<li><a class="reference internal" href="#save-changes-to-file">Save changes to file</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#collaborating-with-other-authors">Collaborating with other authors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
