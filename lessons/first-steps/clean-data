@@ -1,0 +1,35 @@
+#!usr/bin/env bash
+# Author: David Curie
+# Description: Rename files and move them to a new directory.
+# Result:
+#   - Convert dates in filename from MMDDYY to YYYY-MM-DD
+#   - Move files with high-temp in name to high-temp folder
+#   - Move non-labeled data to norm-temp folder
+
+rename_dates () {
+    for file in *.txt;
+    do
+        mv $file $(echo $file | sed -E 's/([0-9]{2})([0-9]{2})([0-9]{2})/20\3-\1-\2/')
+    done
+}
+
+
+move_to_room_temp () {
+    # Call this after moving all other high-temp files
+    mv $1 $(echo $1 | sed -E 's/(.*).txt/\1_room-temp.txt/')
+}
+
+rename_dates
+
+mkdir -p high-temp
+for file in *high-temp*;
+do
+    mv $file high-temp/
+done
+
+mkdir -p room-temp
+for file in *.txt;
+do
+    move_to_room_temp $file
+done
+
