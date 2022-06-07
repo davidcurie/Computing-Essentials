@@ -9,3 +9,4 @@ parts:
 - caption: Lessons
   chapters:
   - glob: lessons/first-steps/*
+  - glob: lessons/git/*
