@@ -252,7 +252,7 @@ we currently are `.`
 If you do not have a working copy of your script, you can find an example
 solution [here][solution].
 
-[solution]: https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/solution.sh
+[solution]: https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/clean-data
 
 ```{hint}
 Remember to `chmod u+x clean-data` if you copied the file from online.
