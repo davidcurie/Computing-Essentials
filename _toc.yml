@@ -8,5 +8,5 @@ parts:
   - file: docs/getting-started
 - caption: Lessons
   chapters:
-  - glob: lessons/first-steps/*
-  - glob: lessons/git/*
+  - glob: lessons/first-steps/introduction*
+  - glob: lessons/git/introduction*
