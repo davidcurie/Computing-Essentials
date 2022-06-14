@@ -72,6 +72,10 @@ A short workshop on computing skills useful for an experimental physicist.
         - Rebase any updates to your intial outline that you rewrote during your solution
     - Ex: Monte Carlo simulation
 
+7. Dashboard/ Jupyter Widgets
+    - Create interactive plot for your colleague
+
+
 ## More Info
 
 - Code and Data for the Social Sciences: A Practitioner's Guide - <https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf>
