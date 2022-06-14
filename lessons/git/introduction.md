@@ -469,11 +469,20 @@ current branch.
 ~/Computing-Essentials/first-steps $ git reset --hard HEAD@{1}
 ```
 
+````{note}
+If you are satisfied with the state of your `first-steps` folder at this point,
+you can safely delete the backup of the directory we made at the beginning of
+this lesson.
+```bash
+~/Computing-Essentials $ rm -rf first-steps.bk
+```
+````
+
 ## Writing a scientific paper
 
 In a related topic, we may use Git constructively to keep track of drafts of a
 paper, so long as we agree to write it in a plain text format like $\LaTeX$ or
-markdown. Let's walk through a typical workflow
+markdown. Let's walk through a typical workflow.
 
 We'll start by creating a new folder for our paper.
 
