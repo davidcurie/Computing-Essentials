@@ -1,4 +1,4 @@
-# First Steps
+# First Steps with Bash
 
 ```{admonition} Prerequisites
 - Bash terminal installed on your machine
