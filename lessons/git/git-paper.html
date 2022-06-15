@@ -1,0 +1,663 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="First Steps with Git" href="../first-steps/first-steps-git.html" />
+
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+        <title>Git for Academic Papers - Computing Essentials</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #fbf1c7;
+  --color-code-foreground: black;
+  --color-problematic: #cc241d;
+  --color-foreground-primary: #282828;
+  --color-foreground-secondary: #3c3836;
+  --color-foreground-muted: #504945;
+  --color-foreground-border: #665c54;
+  --color-background-primary: #f9f5d7;
+  --color-background-secondary: #fbf1c7;
+  --color-background-hover: #d5c4a1;
+  --color-background-hover--transparent: #d5c4a1;
+  --color-background-border: #a89984;
+  --color-background-item: #a89984;
+  --color-announcement-background: #282828dd;
+  --color-announcement-text: #fbf1c7;
+  --color-brand-primary: #79740e;
+  --color-brand-content: #458588;
+  --color-highlight-on-target: #ebdbb2;
+  --color-highlighted-background: #fabd2f;
+  --color-guilabel-background: #b1628680;
+  --color-guilabel-border: #b1628680;
+  --color-admonition-title: #b16286;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-problematic: #fb4934;
+  --color-foreground-primary: #fbf1c7;
+  --color-foreground-secondary: #ebdbb2;
+  --color-foreground-muted: #d5c4a1;
+  --color-foreground-border: #bdae93;
+  --color-background-primary: #282828;
+  --color-background-secondary: #1d2021;
+  --color-background-hover: #3c3836;
+  --color-background-hover--transparent: #3c3836;
+  --color-background-border: #928374;
+  --color-background-item: #928374;
+  --color-announcement-background: #fbf1c7dd;
+  --color-announcement-text: #282828;
+  --color-brand-primary: #b8bb26;
+  --color-brand-content: #83a598;
+  --color-highlight-on-target: #1d2021;
+  --color-highlighted-background: #d79921;
+  --color-guilabel-background: #d3869b80;
+  --color-guilabel-border: #d3869b80;
+  --color-admonition-title: #d3869b80;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-problematic: #fb4934;
+  --color-foreground-primary: #fbf1c7;
+  --color-foreground-secondary: #ebdbb2;
+  --color-foreground-muted: #d5c4a1;
+  --color-foreground-border: #bdae93;
+  --color-background-primary: #282828;
+  --color-background-secondary: #1d2021;
+  --color-background-hover: #3c3836;
+  --color-background-hover--transparent: #3c3836;
+  --color-background-border: #928374;
+  --color-background-item: #928374;
+  --color-announcement-background: #fbf1c7dd;
+  --color-announcement-text: #282828;
+  --color-brand-primary: #b8bb26;
+  --color-brand-content: #83a598;
+  --color-highlight-on-target: #1d2021;
+  --color-highlighted-background: #d79921;
+  --color-guilabel-background: #d3869b80;
+  --color-guilabel-border: #d3869b80;
+  --color-admonition-title: #d3869b80;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../docs/intro.html"><div class="brand">Computing Essentials</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../docs/intro.html">
+  
+  
+  <span class="sidebar-brand-text">Computing Essentials</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/getting-started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../first-steps/first-steps-bash.html">First Steps with Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-steps/first-steps-git.html">First Steps with Git</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Git for Academic Papers</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <div class="tex2jax_ignore mathjax_ignore section" id="git-for-academic-papers">
+<h1>Git for Academic Papers<a class="headerlink" href="#git-for-academic-papers" title="Permalink to this headline">#</a></h1>
+<div class="admonition-prerequisites admonition">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://jlord.us/git-it">Git-It</a> tutorial</p></li>
+<li><p>First Steps with Git</p></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title">Objectives</p>
+<ul class="simple">
+<li><p>Track changes on a paper</p></li>
+<li><p>Collaborate on a paper</p></li>
+</ul>
+</div>
+<p>We’ve seen how Git tracks files and subfolders in a repository, but we can hack
+this workflow for simpler tasks like tracking changes in a text document.
+With online Git protocols, we can collaborate and edit documents in
+ways that supersede storing a paper in a synchronized online folder or using
+familiar <em>Track Changes</em> features in Google Docs or Microsoft Word.
+Furthermore, scientific papers are often written in <span class="math notranslate nohighlight">\(\LaTeX\)</span>, where native
+<em>Track Changes</em> features are not available.</p>
+<p>Online collaborative <span class="math notranslate nohighlight">\(\LaTeX\)</span> software exists at
+<a class="reference external" href="https://overleaf.com">Overleaf</a> (formerly ShareLatex), but this is an online
+Git repository at heart. This service can be approximated for free with a
+proper understanding of Git.</p>
+<p>Here we practice local versioning of a text document to present meaningful
+changes to advisors, co-authors, or editors.</p>
+<div class="section" id="writing-a-scientific-paper">
+<h2>Writing a scientific paper<a class="headerlink" href="#writing-a-scientific-paper" title="Permalink to this headline">#</a></h2>
+<p>A healthily maintained series of commits on a single file already tells a story
+of the changes that were made over time, but these messages should only provide a
+high-level overview of the progress. We can investigate the granular changes in
+each commit or compare changes from two arbitrary commits in a way that
+replicates a <em>Track Changes</em> feature in other proprietary editors.</p>
+<p>We’ll start by creating a new repository for our paper.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ mkdir git-paper <span class="o">&amp;&amp;</span> <span class="nb">cd</span> git-paper
+~/Computing-Essentials/git-paper $ git init
+</pre></div>
+</div>
+<p>We’ll then add a blank document and set it under version control. For this
+example, we’ll use a plain markdown file called <code class="docutils literal notranslate"><span class="pre">main.md</span></code> for our draft.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ touch main.md
+~/Computing-Essentials/git-paper $ git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Initial commit"</span>
+<span class="o">[</span>main <span class="o">(</span>root-commit<span class="o">)</span> 53a9abb<span class="o">]</span> Initial commit
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> main.md
+</pre></div>
+</div>
+<div class="section" id="track-changes">
+<h3>Track changes<a class="headerlink" href="#track-changes" title="Permalink to this headline">#</a></h3>
+<p>We’ll start by overwriting the contents of <code class="docutils literal notranslate"><span class="pre">main.md</span></code> with a dummy file that
+will represent our first draft. You can inspect the file before you download it
+<a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/git/draft_1.md">here</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_1.md &gt; main.md
+</pre></div>
+</div>
+<p>Then commit these changes to our repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add opening paragraph"</span>
+</pre></div>
+</div>
+<p>We’ll repeat this for two more drafts.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_2.md &gt; main.md
+~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add conclusion paragraph"</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_3.md &gt; main.md
+~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Rewrite introduction"</span>
+</pre></div>
+</div>
+<p>We can mimic the <em>Track Changes</em> feature of Word by looking at the difference
+of two files in Git. The general syntax for this purpose is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> $ git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt;...&lt;commit&gt; -- <span class="o">[</span>&lt;path&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">commit</span></code> values represent the <em>start</em> and <em>end</em> commits you want the
+difference between and <code class="docutils literal notranslate"><span class="pre">[&lt;path&gt;]</span></code> is the file(s) to inspect.</p>
+<div class="section" id="compare-two-earlier-drafts">
+<h4>Compare two earlier drafts<a class="headerlink" href="#compare-two-earlier-drafts" title="Permalink to this headline">#</a></h4>
+<p>To view the difference between the first draft and the second draft, we need to
+first know the commits where those drafts were contained.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git log --oneline
+6872fc1 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Rewrite introduction
+69800c3 Add conclusion paragraph
+c951ed4 Add opening paragraph
+53a9abb Initial commit
+</pre></div>
+</div>
+<p>In our example, the drafts are stored at <code class="docutils literal notranslate"><span class="pre">HEAD~2</span></code> and <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code> for the first
+and second draft, respectively. We can see the line-by-line changes between the
+files displayed on the terminal.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ git diff HEAD~2...HEAD~1 -- main.md
+</pre></div>
+</div>
+<p>Here, we can see that the commit message logically corresponded to an
+additional paragraph appended to our first draft by noticing the newline
+additions.</p>
+</div>
+<div class="section" id="compare-all-changes">
+<h4>Compare all changes<a class="headerlink" href="#compare-all-changes" title="Permalink to this headline">#</a></h4>
+<p>If we want to see how the most recent draft has changed since a particular
+commit, we can leave off one of the <code class="docutils literal notranslate"><span class="pre">&lt;commit&gt;</span></code> specifiers; Git will
+automatically compare against <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git diff HEAD~2... -- main.md
+</pre></div>
+</div>
+<p>We see the results of <em>Add conclusion paragraph</em> and <em>Rewrite introduction</em>
+commits.</p>
+</div>
+<div class="section" id="save-changes-to-file">
+<h4>Save changes to file<a class="headerlink" href="#save-changes-to-file" title="Permalink to this headline">#</a></h4>
+<p>The terminal output is helpful if we want to see for ourselves the changes
+between versions, but if our advisor asks us to see the changes, we may decide
+to write this to a file.</p>
+<p>We can redirect the output to a file with <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">filename.ext</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ git diff HEAD~2 main.md &gt; v1-v3_comparison.txt
+</pre></div>
+</div>
+<p>We can then share the file <code class="docutils literal notranslate"><span class="pre">v1-v3_comparison.txt</span></code> file instead of <code class="docutils literal notranslate"><span class="pre">main.md</span></code> as
+it exists in its draft 3 form. More importantly, we don’t need to worry about
+keeping every iteration of draft, changes, and corrections from each editor
+because we know that these diff files can be generated from inside Git. This
+means we can safely delete the <code class="docutils literal notranslate"><span class="pre">v1-v3_comparison.txt</span></code> file after we’ve sent it,
+which keeps our directory clean.</p>
+</div>
+</div>
+</div>
+<div class="section" id="collaborating-with-other-authors">
+<h2>Collaborating with other authors<a class="headerlink" href="#collaborating-with-other-authors" title="Permalink to this headline">#</a></h2>
+<p>Sending an occasional diff file is fine for when you want to present a before
+and after view of your edits, but there are other flavors of updates you can
+share when you involve an entire repository.</p>
+<p>For instance, you can grant others read-only access to your repository for them
+to inspect the diff files on their own. This allows them to pick through which
+changes they may want to compare.</p>
+<p>You might also consider something similar if you want to publish the live
+version of your draft at some website. This project uses the above workflow to
+publish this book, written in markdown, as html.</p>
+<p>You can also grant other people read-write access to your repository if you
+want to invite changes and near real-time collaboration. This case deserves
+special attention to avoid potential pitfalls.</p>
+<div class="section" id="host-your-files-online">
+<h3>Host your files online<a class="headerlink" href="#host-your-files-online" title="Permalink to this headline">#</a></h3>
+<p>The first step in either process above is to host your repository on a server.
+This can be a local server hosted in your research lab, accessible via local
+intranet access, or a cloud-based server hosted by a commercial company. We’ll
+use GitHub for this lesson because its free for features we’ll use, but other
+comparable servers are GitLab and Bitbucket.</p>
+<p>If you’ve completed the recommended <a class="reference external" href="http://jlord.us/git-it">Git-It</a> tutorial, you will already
+have created a GitHub account.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">Creating a new repository on GitHub</a></p>
+</div>
+<p>Even though we’ve created a local Git repository for our folder with the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command, we’ll need to recreate a repository in GitHub and link our
+existing repository to the newly-created online repository.</p>
+<p>Follow the steps to create a repository from the GitHub documentation. By the
+end, you will have a URL that points to your online repository. It will look
+something like <code class="docutils literal notranslate"><span class="pre">https://github.com/UserName/RepoName.git</span></code>.</p>
+<p>Link your local <code class="docutils literal notranslate"><span class="pre">git-paper</span></code> folder to your online repo in the following manner.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote add REMOTENAME URL
+</pre></div>
+</div>
+<p>You may replace <code class="docutils literal notranslate"><span class="pre">REMOTENAME</span></code> with any name you choose to help you differentiate
+where you are pushing. Repeating this step allows you to set multiple remotes
+so that you can push one local Git folder to separate places by name. Most GitHub
+documentation calls this remote <code class="docutils literal notranslate"><span class="pre">origin</span></code> and assumes you don’t have multiple
+online repos to worry about.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git remote add origin URL
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">URL</span></code> with your Git repo. Then update the contents of the online repo
+with your existing commits. The command line syntax is as follows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push REMOTENAME BRANCHNAME
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">BRANCHNAME</span></code> is the name of the local branch you want to push. By default,
+newly initialized Git repos are given a name of <code class="docutils literal notranslate"><span class="pre">main</span></code>, but if you have a repo
+from before 2020 or you clone an older repo, it may be called <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you first installed Git, you may have had the option of selecting a
+default name for newly created projects. The default branch used to be
+<code class="docutils literal notranslate"><span class="pre">master</span></code>, but was renamed to <code class="docutils literal notranslate"><span class="pre">main</span></code> in October 2020. If you browse
+StackExchange posts from before 2020, remember to mentally replace <code class="docutils literal notranslate"><span class="pre">master</span></code>
+with <code class="docutils literal notranslate"><span class="pre">main</span></code> or whatever your branch name is.</p>
+</div>
+<p>You can view your branch names with the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code>. The branch you
+are currently operating on is marked with an asterisk (*).</p>
+<p>Assuming your branch is named <code class="docutils literal notranslate"><span class="pre">main</span></code>, update your changes to your online
+repository.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git push origin main
+</pre></div>
+</div>
+<p>Navigate to your repo URL to see your changes. You can now share this URL with
+your collaborators for them to view your draft. Anyone with this URL has
+read-access to this repository, meaning they can download a local copy of your
+commits and see diffs on their own.</p>
+</div>
+<div class="section" id="managing-multiple-authors">
+<h3>Managing multiple authors<a class="headerlink" href="#managing-multiple-authors" title="Permalink to this headline">#</a></h3>
+<p>If you want users to be able to make edits to the online copy, you’ll need to
+grant them permission in GitHub.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository">Inviting collaborators to a personal
+repository</a></p>
+</div>
+<p>When two or more users are making changes to an online repository, it is
+possible for pushed changes to get out of sync. Git and GitHub will warn you if
+there are conflicting updates to be applied in a commit (known as a <em>Merge
+conflict</em>). This happens when someone is working on an outdated copy of an
+online file.</p>
+<p>We can resynchronize our local copies with the online version with a <em>pull</em>
+command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull origin main
+</pre></div>
+</div>
+<p>This command does two things: it <em>fetches</em> any updates from the origin (online)
+branch and <em>merges</em> them into the main (local) branch. If there are no
+conflicts, changes will be automatically applied and your <em>HEAD</em> pointer will
+be up-to-date with the online version. If there are conflicts, you may be asked
+to pick which of the two versions you want to keep, depending on your editor.</p>
+<p>You can instead pick and choose parts of each version by manually editing the
+conflicting files. The file in question will have both changes applied inside
+special formatting:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Some existing lines of text.
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Some old text in your local copy.
+=======
+New text that conflicts with the part above.
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; REMOTENAME
+
+Some more existing lines of text that are unaffected.
+</pre></div>
+</div>
+<p>If your editor does not help you resolve this, select the parts of the text
+you’d like to keep by removing the unnecessary parts, along with the extra
+formatting.</p>
+<p>When you are pleased with your edits, you’ll need to tell Git that
+you are done resolving conflicts on that file. This is done with a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;filename&gt;</span></code> command.</p>
+<p>When all of your conflicted files are staged, save them
+with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>. Pick a useful message that tells you which versions you’ve
+incorporated in your changes; this will be visible to all future collaborators
+who pull from your repo once you next push your changes. You can be more
+detailed in the comments of your commit by writing these details on newlines in
+your commit message.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.atlassian.com/git/tutorials/syncing">Atlassian: Syncing</a></p></li>
+<li><p><a class="reference external" href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts">Atlassian: Merge Conflicts</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="workflow">
+<h3>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">#</a></h3>
+<p><mark>Many problems in the collaborating pipeline can be avoided if you make a
+habit of pulling before you push.</mark> This doesn’t guarantee that you won’t
+have merge conflicts, but it allows you to resolve those conflicts locally
+before you update them to the remote branch, meaning the work you did to
+resolve the conflict will now be stored in the commit tree for others to
+benefit from.</p>
+<ol class="simple">
+<li><p>Pull any updates from online</p></li>
+<li><p>State of affairs from previous commit (working tree clean)</p></li>
+<li><p>Make changes to files</p></li>
+<li><p>Stage files</p></li>
+<li><p>Commit</p></li>
+<li><p>Pull any updates since you’ve been editing</p>
+<ul class="simple">
+<li><p>Resolve conflicts if necessary</p></li>
+</ul>
+</li>
+<li><p>Push changes for others to see</p></li>
+</ol>
+<p>Notice that a <code class="docutils literal notranslate"><span class="pre">pull</span></code> command is recommended both before you start editing (so
+that you are starting from an up-to-date version) and before you publish (in
+case others have incorporated the same changes you were working on).</p>
+</div>
+</div>
+</div>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/git"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="../first-steps/first-steps-git.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">First Steps with Git</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022 David Curie
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Git for Academic Papers</a><ul>
+<li><a class="reference internal" href="#writing-a-scientific-paper">Writing a scientific paper</a><ul>
+<li><a class="reference internal" href="#track-changes">Track changes</a><ul>
+<li><a class="reference internal" href="#compare-two-earlier-drafts">Compare two earlier drafts</a></li>
+<li><a class="reference internal" href="#compare-all-changes">Compare all changes</a></li>
+<li><a class="reference internal" href="#save-changes-to-file">Save changes to file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#collaborating-with-other-authors">Collaborating with other authors</a><ul>
+<li><a class="reference internal" href="#host-your-files-online">Host your files online</a></li>
+<li><a class="reference internal" href="#managing-multiple-authors">Managing multiple authors</a></li>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

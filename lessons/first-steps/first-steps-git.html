@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="First Steps" href="../first-steps/introduction.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Git for Academic Papers" href="../git/git-paper.html" /><link rel="prev" title="First Steps with Bash" href="first-steps-bash.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Git - Computing Essentials</title>
+        <title>First Steps with Git - Computing Essentials</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
@@ -224,8 +224,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../first-steps/introduction.html">First Steps</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-steps-bash.html">First Steps with Bash</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">First Steps with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-paper.html">Git for Academic Papers</a></li>
 </ul>
 
 </div>
@@ -258,25 +259,23 @@
           </label>
         </div>
         <article role="main">
-          <div class="tex2jax_ignore mathjax_ignore section" id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
+          <div class="tex2jax_ignore mathjax_ignore section" id="first-steps-with-git">
+<h1>First Steps with Git<a class="headerlink" href="#first-steps-with-git" title="Permalink to this headline">#</a></h1>
 <div class="admonition-prerequisites admonition">
 <p class="admonition-title">Prerequisites</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://jlord.us/git-it">Git-It</a> tutorial</p></li>
-<li><p>First Steps</p></li>
+<li><p>First Steps with Bash</p></li>
 </ul>
 </div>
 <div class="topic">
 <p class="topic-title">Objectives</p>
 <ul class="simple">
 <li><p>Document a project</p></li>
-<li><p>Collaborate on a scientific paper</p></li>
 </ul>
 </div>
 <div class="section" id="first-steps-extension">
 <h2>First Steps extension<a class="headerlink" href="#first-steps-extension" title="Permalink to this headline">#</a></h2>
-<p>The <em>First Steps</em> lesson had you move files in your filesystem in some
+<p>The <em>First Steps with Bash</em> lesson had you move files in your filesystem in some
 non-trivial ways. We overwrote filenames with presumably more descriptive
 names, but what if we later want to edit the names further and forgot what the
 original names of those files were?</p>
@@ -395,7 +394,7 @@ descriptive message; save; and close the file.</p>
 </div>
 </div>
 <div class="section" id="inspect-history">
-<h3>Inspect History<a class="headerlink" href="#inspect-history" title="Permalink to this headline">#</a></h3>
+<h3>Inspect history<a class="headerlink" href="#inspect-history" title="Permalink to this headline">#</a></h3>
 <p>To inspect previous commits, we can look at the history with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>. By
 default, the log will contain the full commit hash of each commit, along with
 the author, the date of commit, and the commit message file like the one we
@@ -663,108 +662,46 @@ current branch.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ git reset --hard HEAD@<span class="o">{</span><span class="m">1</span><span class="o">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are satisfied with the state of your <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder at this point,
+you can safely delete the backup of the directory we made at the beginning of
+this lesson.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ rm -rf first-steps.bk
+</pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="writing-a-scientific-paper">
-<h2>Writing a scientific paper<a class="headerlink" href="#writing-a-scientific-paper" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="concluding-remarks">
+<h2>Concluding remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this headline">#</a></h2>
+<p>The workflow above represents one of many uses for Git. Future lessons in this series will make use of Git to establish a safe point in our iteration cycles, as later lessons will overwrite working code from beginner lessons.</p>
 <p>In a related topic, we may use Git constructively to keep track of drafts of a
 paper, so long as we agree to write it in a plain text format like <span class="math notranslate nohighlight">\(\LaTeX\)</span> or
-markdown. Let’s walk through a typical workflow</p>
-<p>We’ll start by creating a new folder for our paper.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/first-steps $ <span class="nb">cd</span> ..
-~/Computing-Essentials $ mkdir git-paper <span class="o">&amp;&amp;</span> <span class="nb">cd</span> git-paper
-~/Computing-Essentials/git-paper $ git init
-</pre></div>
+markdown. The next lesson discusses this in more detail.</p>
+<div class="section" id="git-advice">
+<h3>Git advice<a class="headerlink" href="#git-advice" title="Permalink to this headline">#</a></h3>
+<p>Consider these final bits of advice as you develop your Git habits in this series:</p>
+<ul class="simple">
+<li><p>Keep commits logically structured. One collective change = one commit.</p></li>
+<li><p>Keep commit messages short and informative.</p></li>
+<li><p>Use imperative verb form in commits (<code class="docutils literal notranslate"><span class="pre">Fix</span> <span class="pre">bug</span> <span class="pre">#123</span></code>, not <code class="docutils literal notranslate"><span class="pre">Fixes</span> <span class="pre">bug</span> <span class="pre">#123</span></code> nor <code class="docutils literal notranslate"><span class="pre">Fixed</span> <span class="pre">bug</span> <span class="pre">#123</span></code>).</p></li>
+<li><p>Consistency is key.</p></li>
+</ul>
+<p>Remember that your commit messages should tell a story of your progress over
+time. You may decide on what an appropriate unit of change is for yourself. If
+your messages are uninformative to you, the benefits of version control will be
+largely underutilized. The extra time spent in crafting useful and purposeful
+changes as you work will pay off when you need to change research directions or
+bring other collaborators into the mix.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gitkraken.com/learn/git/best-practices/git-commit-message">Writing a Good Commit Message</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=sH4fr8eQHaE&amp;list=PLJGDHERh23x_4MDp0m4Arswm5VErr3tbl">Git Tutorial for Absolute Beginners from Zero to Hero</a> (video playlist: 16 videos)</p></li>
+</ul>
 </div>
-<p>We’ll then add a blank document and set it under version control. For this
-example, we’ll use a plain markdown file called <code class="docutils literal notranslate"><span class="pre">main.md</span></code> for our draft.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ touch main.md
-~/Computing-Essentials/git-paper $ git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Initial commit"</span>
-<span class="o">[</span>main <span class="o">(</span>root-commit<span class="o">)</span> 53a9abb<span class="o">]</span> Initial commit
- <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
- create mode <span class="m">100644</span> main.md
-</pre></div>
-</div>
-<div class="section" id="track-changes">
-<h3>Track changes<a class="headerlink" href="#track-changes" title="Permalink to this headline">#</a></h3>
-<p>We’ll start by overwriting the contents of <code class="docutils literal notranslate"><span class="pre">main.md</span></code> with a dummy file that
-will represent our first draft. You can inspect the file before you download it
-<a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/git/draft_1.md">here</a>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_1.md &gt; main.md
-</pre></div>
-</div>
-<p>Then commit these changes to our repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add opening paragraph"</span>
-</pre></div>
-</div>
-<p>We’ll repeat this for two more drafts.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_2.md &gt; main.md
-~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add conclusion paragraph"</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/git/draft_3.md &gt; main.md
-~/Computing-Essentials/git-paper $ git add main.md <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Rewrite introduction"</span>
-</pre></div>
-</div>
-<p>We can mimic the <em>Track Changes</em> feature of Word by looking at the difference
-of two files in Git. The general syntax for this purpose is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> $ git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt;...&lt;commit&gt; -- <span class="o">[</span>&lt;path&gt;<span class="o">]</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">commit</span></code> values represent the <em>start</em> and <em>end</em> commits you want the
-difference between and <code class="docutils literal notranslate"><span class="pre">[&lt;path&gt;]</span></code> is the file(s) to inspect.</p>
-<div class="section" id="compare-two-earlier-drafts">
-<h4>Compare two earlier drafts<a class="headerlink" href="#compare-two-earlier-drafts" title="Permalink to this headline">#</a></h4>
-<p>To view the difference between the first draft and the second draft, we need to
-first know the commits where those drafts were contained.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git log --oneline
-6872fc1 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Rewrite introduction
-69800c3 Add conclusion paragraph
-c951ed4 Add opening paragraph
-53a9abb Initial commit
-</pre></div>
-</div>
-<p>In our example, the drafts are stored at <code class="docutils literal notranslate"><span class="pre">HEAD~2</span></code> and <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code> for the first
-and second draft, respectively. We can see the line-by-line changes between the
-files displayed on the terminal.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ git diff HEAD~2...HEAD~1 -- main.md
-</pre></div>
-</div>
-<p>Here, we can see that the commit message logically corresponded to an
-additional paragraph appended to our first draft by noticing the newline
-additions.</p>
-</div>
-<div class="section" id="compare-all-changes">
-<h4>Compare all changes<a class="headerlink" href="#compare-all-changes" title="Permalink to this headline">#</a></h4>
-<p>If we want to see how the most recent draft has changed since a particular
-commit, we can leave off one of the <code class="docutils literal notranslate"><span class="pre">&lt;commit&gt;</span></code> specifiers; Git will
-automatically compare against <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials/git-paper $ git diff HEAD~2... -- main.md
-</pre></div>
-</div>
-<p>We see the results of <em>Add conclusion paragraph</em> and <em>Rewrite introduction</em>
-commits.</p>
-</div>
-<div class="section" id="save-changes-to-file">
-<h4>Save changes to file<a class="headerlink" href="#save-changes-to-file" title="Permalink to this headline">#</a></h4>
-<p>The terminal output is helpful if we want to see for ourselves the changes
-between versions, but if our advisor asks us to see the changes, we may decide
-to write this to a file.</p>
-<p>We can redirect the output to a file with <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">filename.ext</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/Computing-Essentials $ git diff HEAD~2 main.md &gt; v1-v3_comparison.txt
-</pre></div>
-</div>
-<p>We can then share the file <code class="docutils literal notranslate"><span class="pre">v1-v3_comparison.txt</span></code> file instead of <code class="docutils literal notranslate"><span class="pre">main.md</span></code> as
-it exists in its draft 3 form. More importantly, we don’t need to worry about
-keeping every iteration of draft, changes, and corrections from each editor
-because we know that these diff files can be generated from inside Git. This
-means we can safely delete the <code class="docutils literal notranslate"><span class="pre">v1-v3_comparison.txt</span></code> file after we’ve sent it,
-which keeps our directory clean.</p>
-</div>
-</div>
-<div class="section" id="collaborating-with-other-authors">
-<h3>Collaborating with other authors<a class="headerlink" href="#collaborating-with-other-authors" title="Permalink to this headline">#</a></h3>
 </div>
 </div>
 </div>
@@ -781,7 +718,7 @@ which keeps our directory clean.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./lessons/git"
+            path: "./lessons/first-steps"
         },
         predefinedOutput: true
     }
@@ -792,15 +729,23 @@ which keeps our directory clean.</p>
       <footer>
         
         <div class="related-pages">
-          
-          <a class="prev-page" href="../first-steps/introduction.html">
+          <a class="next-page" href="../git/git-paper.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Git for Academic Papers</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="first-steps-bash.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">First Steps</div>
+                <div class="title">First Steps with Bash</div>
                 
               </div>
             </a>
@@ -836,12 +781,12 @@ which keeps our directory clean.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Git</a><ul>
+<li><a class="reference internal" href="#">First Steps with Git</a><ul>
 <li><a class="reference internal" href="#first-steps-extension">First Steps extension</a><ul>
 <li><a class="reference internal" href="#creating-a-git-repository">Creating a Git repository</a></li>
 <li><a class="reference internal" href="#populate-initial-files">Populate initial files</a></li>
 <li><a class="reference internal" href="#add-and-commit-changes">Add and commit changes</a></li>
-<li><a class="reference internal" href="#inspect-history">Inspect History</a></li>
+<li><a class="reference internal" href="#inspect-history">Inspect history</a></li>
 <li><a class="reference internal" href="#make-further-changes">Make further changes</a></li>
 <li><a class="reference internal" href="#complete-first-steps">Complete First Steps</a></li>
 <li><a class="reference internal" href="#undo-a-change">Undo a change</a><ul>
@@ -854,14 +799,8 @@ which keeps our directory clean.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#writing-a-scientific-paper">Writing a scientific paper</a><ul>
-<li><a class="reference internal" href="#track-changes">Track changes</a><ul>
-<li><a class="reference internal" href="#compare-two-earlier-drafts">Compare two earlier drafts</a></li>
-<li><a class="reference internal" href="#compare-all-changes">Compare all changes</a></li>
-<li><a class="reference internal" href="#save-changes-to-file">Save changes to file</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#collaborating-with-other-authors">Collaborating with other authors</a></li>
+<li><a class="reference internal" href="#concluding-remarks">Concluding remarks</a><ul>
+<li><a class="reference internal" href="#git-advice">Git advice</a></li>
 </ul>
 </li>
 </ul>
