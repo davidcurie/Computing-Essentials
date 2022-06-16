@@ -2,7 +2,7 @@
 title: "Computing Essentials"
 author: "David Curie"
 copyright: "2022 David Curie"
-# logo: logo.png
+logo: logo.png
 execute:
   execute_notebooks: force
 
@@ -44,6 +44,17 @@ sphinx:
             "color-guilabel-background": "#b1628680"
             "color-guilabel-border": "#b1628680"
             "color-admonition-title": "#b16286"
+            "color-topic-title": "#282828"
+            "color-admonition-title--caution": "#d79921"
+            "color-admonition-title--warning": "#d65d0e"
+            "color-admonition-title--danger": "#cc241d"
+            "color-admonition-title--attention": "#d65d0e"
+            "color-admonition-title--error": "#cc241d"
+            "color-admonition-title--hint": "#689d6a"
+            "color-admonition-title--tip": "#689d6a"
+            "color-admonition-title--important": "#458588"
+            "color-admonition-title--note": "#689d6a"
+            "color-admonition-title--seealso": "#458588"
         "dark_css_variables":
             "color-problematic": "#fb4934"
             "color-foreground-primary": "#fbf1c7"
@@ -65,6 +76,17 @@ sphinx:
             "color-guilabel-background": "#d3869b80"
             "color-guilabel-border": "#d3869b80"
             "color-admonition-title": "#d3869b80"
+            "color-topic-title": "#ebdbb2"
+            "color-admonition-title--caution": "#fabd2f"
+            "color-admonition-title--warning": "#fe8019"
+            "color-admonition-title--danger": "#fb4934"
+            "color-admonition-title--attention": "#fe8019"
+            "color-admonition-title--error": "#fb4934"
+            "color-admonition-title--hint": "#8ec07c"
+            "color-admonition-title--tip": "#8ec07c"
+            "color-admonition-title--important": "#83a598"
+            "color-admonition-title--note": "#8ec07c"
+            "color-admonition-title--seealso": "#83a598"
     pygments_style: "gruvbox-light"
     # pygments_dark_style: "solarized-dark"
     copybutton_prompt_text: '>>> |\.\.\. |^.*[^ ] [%$] |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: '
