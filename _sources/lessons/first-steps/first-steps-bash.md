@@ -303,7 +303,7 @@ someone entered the room.
 You may use the `grep` command to find the file. The general syntax is
 
 ```bash
-~ $ grep -l pattern file1 file2 ...
+~ $ grep -l 'pattern' file1 file2 ...
 ```
 
 
@@ -326,7 +326,7 @@ handle the execution of this file. For now, this will be `bash`. We do this
 with the following:
 
 ```bash
-#!usr/bin/env bash
+#! /bin/bash
 # Author: Your name
 # Description: Simple sentence of what this file will do
 

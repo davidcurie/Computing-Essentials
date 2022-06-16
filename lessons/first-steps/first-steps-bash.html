@@ -227,6 +227,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">First Steps with Bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-steps-git.html">First Steps with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../git/git-paper.html">Git for Academic Papers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-steps-python.html">First steps with Python</a></li>
 </ul>
 
 </div>
@@ -554,7 +555,7 @@ getting did not go above 356 counts in this time. Use this as a discriminator
 to find the data, and thus the night(s), that you were collecting data when
 someone entered the room.</p>
 <p>You may use the <code class="docutils literal notranslate"><span class="pre">grep</span></code> command to find the file. The general syntax is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ grep -l pattern file1 file2 ...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~ $ grep -l <span class="s1">'pattern'</span> file1 file2 ...
 </pre></div>
 </div>
 <div class="topic">
@@ -574,7 +575,7 @@ below.</p>
 <em>shebang</em> that tells the terminal what program you will eventually want to
 handle the execution of this file. For now, this will be <code class="docutils literal notranslate"><span class="pre">bash</span></code>. We do this
 with the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!usr/bin/env bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/bash</span>
 <span class="c1"># Author: Your name</span>
 <span class="c1"># Description: Simple sentence of what this file will do</span>
 
