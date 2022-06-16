@@ -1,4 +1,4 @@
-#!usr/env/bin bash
+#! /bin/bash
 
 # Author: David Curie
 # A simple script to be run by the end-user of this lesson series to populate
@@ -12,9 +12,9 @@
 
 lesson_directory=first-steps
 
-function create_directory {
+create_directory () {
     dirname=$(basename $PWD)
-    if [[ $dirname == "Computing-Essentials" ]]
+    if [ "$dirname" = "Computing-Essentials" ]
     then
         mkdir -p $lesson_directory
     else
@@ -23,25 +23,30 @@ function create_directory {
     fi
 }
 
-function populate_directory {
-    touch $lesson_directory/{0{8..9},{10..12}}{0{1..9},{10..30}}21_results.txt
-    touch $lesson_directory/0{1..4}{0{1..9},{10..29}}22_results.txt
-    touch $lesson_directory/{0{8..9},{10..12}}{11,22}21_high-temp_results.txt
-    touch $lesson_directory/summary.csv
+populate_directory () {
+    curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/${lesson_directory}/filenames.txt > ${lesson_directory}/filenames.txt
+    filenames=$(cat ${lesson_directory}/filenames.txt)
+    for filename in ${filenames}
+    do
+        touch ${lesson_directory}/${filename}
+    done
+    rm ${lesson_directory}/filenames.txt
 }
 
-function populate_spectrum () {
-    touch dummy.tmp
+populate_spectrum_for_file () {
+    touch ${lesson_directory}/dummy.tmp
     for wavelength in {530..700}
     do
-        echo "$wavelength\t$(($RANDOM % 100 + 256))" >> dummy.tmp
+        echo -e "${wavelength}\t$((256 + RANDOM % 100))" >> ${lesson_directory}/dummy.tmp
     done
-    cat dummy.tmp > $1
-    rm dummy.tmp
+    cat ${lesson_directory}/dummy.tmp > $1
+    rm ${lesson_directory}/dummy.tmp
 }
 
-function simulate_noise () {
-    sed -E -i '' 's/^600\t.{3}/600\t382/' $1
+simulate_noise_for_file () {
+    touch ${lesson_directory}/modified.txt
+    sed -E 's/^600\t.{3}/600\t382/' $1 > ${lesson_directory}/modified.txt
+    mv ${lesson_directory}/modified.txt $1
 }
 
 create_directory
@@ -49,7 +54,7 @@ populate_directory
 
 for file in $lesson_directory/*.txt
 do
-    populate_spectrum $file
+    populate_spectrum_for_file $file
 done
 
-simulate_noise $lesson_directory/122521_results.txt
+simulate_noise_for_file $lesson_directory/122521_results.txt

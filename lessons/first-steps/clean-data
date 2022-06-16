@@ -1,10 +1,11 @@
-#!usr/bin/env bash
+#! /bin/bash
 # Author: David Curie
 # Description: Rename files and move them to a new directory.
 # Result:
 #   - Convert dates in filename from MMDDYY to YYYY-MM-DD
 #   - Move files with high-temp in name to high-temp folder
-#   - Move non-labeled data to norm-temp folder
+#   - Move non-labeled data to room-temp folder and append room-temp label
+#   - Find any files with above-normal spectra and list them in to-clean.txt
 
 rename_dates () {
     for file in *.txt;
@@ -15,8 +16,17 @@ rename_dates () {
 
 
 move_to_room_temp () {
-    # Call this after moving all other high-temp files
-    mv $1 $(echo $1 | sed -E 's/(.*).txt/\1_room-temp.txt/')
+    # Call this after moving all other high-temp files and creating room-temp/
+    mv $1 $(echo $1 | sed -E 's/(.*).txt/room-temp\/\1_room-temp.txt/')
+}
+
+find_outliers_from_files () {
+    # Assuming 'counts' data above 356 is an outlier
+    files_to_search=$@
+    grep -E -l '\t35[6-9]|\t3[6-9][0-9]*|\t[4-9][0-9]*' ${files_to_search} >> to-clean.txt
+    awk '!seen[$0]++' to-clean.txt > sorted-clean.txt
+    mv sorted-clean.txt to-clean.txt
+
 }
 
 rename_dates
@@ -33,3 +43,4 @@ do
     move_to_room_temp $file
 done
 
+find_outliers_from_files */*results*
