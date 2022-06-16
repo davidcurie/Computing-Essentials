@@ -221,7 +221,7 @@ Navigate to `~/Computing-Essentials` in a terminal and execute the following com
 
 ```bash
 ~/Computing-Essentials $ curl https://raw.githubusercontent.com/davidcurie/Computing-Essentials/main/lessons/first-steps/make-first-steps.sh > make-first-steps.sh
-~/Computing-Essentials $ chmod u+x make-first-steps.sh && sh make-first-steps.sh
+~/Computing-Essentials $ chmod u+x make-first-steps.sh && ./make-first-steps.sh
 ```
 
 The above commands download and execute a script that will create and populate
