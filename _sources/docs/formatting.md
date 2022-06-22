@@ -5,21 +5,41 @@ options.
 
 ## Admonitions
 
-```{error}
-Turn back now
+```{caution}
+If your date brings up a topic of Capricorn, it could be a sign they are
+Cancer.
 ```
 
 ```{warning}
 There be dragons ahead!
 ```
 
-```{caution}
-If your date brings up a topic of Capricorn, it could be a sign they are
-Cancer.
+```{danger}
+Will Robinson
+```
+
+```{attention}
+All hands on deck.
+```
+
+```{error}
+Turn back now
+```
+
+```{hint}
+It rhymes with orange.
 ```
 
 ```{tip}
 Use metric units whenever possible.
+```
+
+```{important}
+Brush your teeth daily.
+```
+
+```{topic} Topic
+Topic
 ```
 
 Tread carefully, and watch where you point your bow and arrow. You wouldn't
@@ -27,6 +47,10 @@ want to take an arrow to the knee.
 
 ```{note}
 This is a reference to Skyrim guards
+```
+
+```{seealso}
+Referenced game above
 ```
 
 ## Tables

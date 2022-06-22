@@ -43,6 +43,17 @@
   --color-guilabel-background: #b1628680;
   --color-guilabel-border: #b1628680;
   --color-admonition-title: #b16286;
+  --color-topic-title: #282828;
+  --color-admonition-title--caution: #d79921;
+  --color-admonition-title--warning: #d65d0e;
+  --color-admonition-title--danger: #cc241d;
+  --color-admonition-title--attention: #d65d0e;
+  --color-admonition-title--error: #cc241d;
+  --color-admonition-title--hint: #689d6a;
+  --color-admonition-title--tip: #689d6a;
+  --color-admonition-title--important: #458588;
+  --color-admonition-title--note: #689d6a;
+  --color-admonition-title--seealso: #458588;
   
   }
   @media not print {
@@ -69,6 +80,17 @@
   --color-guilabel-background: #d3869b80;
   --color-guilabel-border: #d3869b80;
   --color-admonition-title: #d3869b80;
+  --color-topic-title: #ebdbb2;
+  --color-admonition-title--caution: #fabd2f;
+  --color-admonition-title--warning: #fe8019;
+  --color-admonition-title--danger: #fb4934;
+  --color-admonition-title--attention: #fe8019;
+  --color-admonition-title--error: #fb4934;
+  --color-admonition-title--hint: #8ec07c;
+  --color-admonition-title--tip: #8ec07c;
+  --color-admonition-title--important: #83a598;
+  --color-admonition-title--note: #8ec07c;
+  --color-admonition-title--seealso: #83a598;
   
     }
     @media (prefers-color-scheme: dark) {
@@ -95,6 +117,17 @@
   --color-guilabel-background: #d3869b80;
   --color-guilabel-border: #d3869b80;
   --color-admonition-title: #d3869b80;
+  --color-topic-title: #ebdbb2;
+  --color-admonition-title--caution: #fabd2f;
+  --color-admonition-title--warning: #fe8019;
+  --color-admonition-title--danger: #fb4934;
+  --color-admonition-title--attention: #fe8019;
+  --color-admonition-title--error: #fb4934;
+  --color-admonition-title--hint: #8ec07c;
+  --color-admonition-title--tip: #8ec07c;
+  --color-admonition-title--important: #83a598;
+  --color-admonition-title--note: #8ec07c;
+  --color-admonition-title--seealso: #83a598;
   
       }
     }
@@ -208,8 +241,11 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../docs/intro.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../docs/intro.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.png" alt="Logo"/>
+  </div>
   
   <span class="sidebar-brand-text">Computing Essentials</span>
   
@@ -435,7 +471,7 @@ file with <code class="docutils literal notranslate"><span class="pre">&gt;</spa
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a{3}</span></code></p></td>
 <td><p>exactly 3 of <em>a</em></p></td>
 </tr>
-<tr class="row-odd"><td><p>`a{3,}</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a{3,}</span></code></p></td>
 <td><p>3 or more of <em>a</em></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
@@ -446,7 +482,7 @@ file with <code class="docutils literal notranslate"><span class="pre">&gt;</spa
 <p>Under extended regex syntax (<code class="docutils literal notranslate"><span class="pre">-E</span></code> flag), you may also use capturing groups by
 enclosing your desired matching expression in <code class="docutils literal notranslate"><span class="pre">()</span></code>. This allows you to
 rearrange groups of matches in your <code class="docutils literal notranslate"><span class="pre">replace</span></code> syntax by referencing the
-matching groups.</p>
+matching groups as numeric variables corresponding to the order of the matches.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference external" href="https://www.regex101.com">Regex101</a>: helpful interactive construction syntax</p>

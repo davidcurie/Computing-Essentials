@@ -43,6 +43,17 @@
   --color-guilabel-background: #b1628680;
   --color-guilabel-border: #b1628680;
   --color-admonition-title: #b16286;
+  --color-topic-title: #282828;
+  --color-admonition-title--caution: #d79921;
+  --color-admonition-title--warning: #d65d0e;
+  --color-admonition-title--danger: #cc241d;
+  --color-admonition-title--attention: #d65d0e;
+  --color-admonition-title--error: #cc241d;
+  --color-admonition-title--hint: #689d6a;
+  --color-admonition-title--tip: #689d6a;
+  --color-admonition-title--important: #458588;
+  --color-admonition-title--note: #689d6a;
+  --color-admonition-title--seealso: #458588;
   
   }
   @media not print {
@@ -69,6 +80,17 @@
   --color-guilabel-background: #d3869b80;
   --color-guilabel-border: #d3869b80;
   --color-admonition-title: #d3869b80;
+  --color-topic-title: #ebdbb2;
+  --color-admonition-title--caution: #fabd2f;
+  --color-admonition-title--warning: #fe8019;
+  --color-admonition-title--danger: #fb4934;
+  --color-admonition-title--attention: #fe8019;
+  --color-admonition-title--error: #fb4934;
+  --color-admonition-title--hint: #8ec07c;
+  --color-admonition-title--tip: #8ec07c;
+  --color-admonition-title--important: #83a598;
+  --color-admonition-title--note: #8ec07c;
+  --color-admonition-title--seealso: #83a598;
   
     }
     @media (prefers-color-scheme: dark) {
@@ -95,6 +117,17 @@
   --color-guilabel-background: #d3869b80;
   --color-guilabel-border: #d3869b80;
   --color-admonition-title: #d3869b80;
+  --color-topic-title: #ebdbb2;
+  --color-admonition-title--caution: #fabd2f;
+  --color-admonition-title--warning: #fe8019;
+  --color-admonition-title--danger: #fb4934;
+  --color-admonition-title--attention: #fe8019;
+  --color-admonition-title--error: #fb4934;
+  --color-admonition-title--hint: #8ec07c;
+  --color-admonition-title--tip: #8ec07c;
+  --color-admonition-title--important: #83a598;
+  --color-admonition-title--note: #8ec07c;
+  --color-admonition-title--seealso: #83a598;
   
       }
     }
@@ -199,7 +232,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -208,8 +241,11 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../docs/intro.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../docs/intro.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.png" alt="Logo"/>
+  </div>
   
   <span class="sidebar-brand-text">Computing Essentials</span>
   
@@ -254,7 +290,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -262,6 +298,600 @@
         <article role="main">
           <div class="tex2jax_ignore mathjax_ignore section" id="first-steps-with-python">
 <h1>First steps with Python<a class="headerlink" href="#first-steps-with-python" title="Permalink to this headline">#</a></h1>
+<div class="admonition-prerequisites admonition">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>Conda package manager (part of Anaconda or Miniconda)</p></li>
+</ul>
+</div>
+<div class="admonition-optional-prerequisites admonition">
+<p class="admonition-title">Optional Prerequisites</p>
+<ul class="simple">
+<li><p>Jupyter Notebook / Jupyter Lab</p></li>
+<li><p><a class="reference external" href="https://exercism.org/tracks/python/concepts">Exercism</a> Python track: first 14 learning exercises</p></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title">Objectives</p>
+<ul class="simple">
+<li><p>Plot data from a file</p></li>
+<li><p>Use a Jupyter Notebook</p></li>
+<li><p>Write a Python script</p></li>
+</ul>
+</div>
+<p>Now that we’ve sorted and organized our dummy data from the previous <em>First
+Steps</em> lessons, we’d like to visualize it.</p>
+<div class="section" id="setting-up-a-python-environment">
+<h2>Setting up a Python environment<a class="headerlink" href="#setting-up-a-python-environment" title="Permalink to this headline">#</a></h2>
+<p>We’ve already taken steps to prepare our <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder for public
+appearance by giving it a <code class="docutils literal notranslate"><span class="pre">LICENCE</span></code> and <code class="docutils literal notranslate"><span class="pre">README</span></code>. We’ve also started recording
+its evolution with Git. Finally, we need to ensure that future collaborators
+have the same working set of assumptions about the code that may be executed.
+These assumptions are declared as dependencies, and it is good practice to
+isolate these requirements for each project. We isolate with the use of <em>virtual
+environments</em> and document the packages in an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file.</p>
+<p>After you’ve installed Conda (through Anaconda or Miniconda) and run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span></code> to activate it on your system, you might notice your terminal has a few
+extra characters to the left of the prompt. It probably reads something like
+this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> ~/Computing-Essentials $
+</pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Windows</p>
+<p>GitBash does not handle Conda activation. For this lesson, you may use
+AnacondaPrompt (installed with Anaconda), WSL/WSL2, or Windows Terminal.</p>
+</div>
+<p>The name to the left indicates that your currently active Conda virtual
+environment is the default environment <code class="docutils literal notranslate"><span class="pre">(base)</span></code> to which any packages will be
+installed.</p>
+<p>Conda makes setting up and initializing new virtual environments in Python
+relatively simple. Create environments with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --name env_name
+</pre></div>
+</div>
+<p>Activate existing environments with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate env_name
+</pre></div>
+</div>
+<p>We’ll pick an environment name that is the same as our folder name. Consider
+abbreviating long names, as this name will show up in your prompt after
+activation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda create --name first-steps
+Collecting package metadata <span class="o">(</span>current_repodata.json<span class="o">)</span>: <span class="k">done</span>
+Solving environment: <span class="k">done</span>
+
+<span class="c1">## Package Plan ##</span>
+
+  environment location: /opt/anaconda3/envs/first-steps
+
+
+
+  Proceed <span class="o">([</span>y<span class="o">]</span>/n<span class="o">)</span>? y
+
+Preparing transaction: <span class="k">done</span>
+Verifying transaction: <span class="k">done</span>
+Executing transaction: <span class="k">done</span>
+<span class="c1">#</span>
+<span class="c1"># To activate this environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda activate first-steps</span>
+<span class="c1">#</span>
+<span class="c1"># To deactivate an active environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda deactivate</span>
+
+<span class="o">(</span>base<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda activate first-steps
+<span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $
+</pre></div>
+</div>
+<p>Notice that after successful activation, the beginning of the prompt changed
+from <code class="docutils literal notranslate"><span class="pre">(base)</span></code> to <code class="docutils literal notranslate"><span class="pre">(first-steps)</span></code>.</p>
+<p>To deactivate the current environment, you can run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> from your
+terminal, or you may close your terminal session. When you open up a new
+terminal, it will revert to the default <code class="docutils literal notranslate"><span class="pre">(base)</span></code> environment.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533">The Definitive Guide to Conda Environments</a></p>
+</div>
+<div class="section" id="installing-packages">
+<h3>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">#</a></h3>
+<p>Our <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> environment currently has no packages installed, not even
+<code class="docutils literal notranslate"><span class="pre">python</span></code>. We’ll need a few plotting tools on top of the base distribution of
+Python. We can install multiple packages with <em>conda</em> into our existing
+environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda install python matplotlib pandas
+</pre></div>
+</div>
+<p>These packages will also install any required dependencies. We can list every
+package that was installed with the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda list
+<span class="c1"># packages in environment at /opt/anaconda3/envs/first-steps:</span>
+<span class="c1">#</span>
+<span class="c1"># Name                    Version                   Build  Channel</span>
+⋮
+matplotlib                <span class="m">3</span>.5.1           py310hecd8cb5_1  
+matplotlib-base           <span class="m">3</span>.5.1           py310hfb0c5b7_1  
+numpy                     <span class="m">1</span>.22.3          py310hdcd3fac_0  
+numpy-base                <span class="m">1</span>.22.3          py310hfd2de13_0  
+⋮
+pandas                    <span class="m">1</span>.4.2           py310he9d5cce_0  
+⋮
+pip                       <span class="m">21</span>.2.4          py310hecd8cb5_0  
+⋮
+python                    <span class="m">3</span>.10.4               hdfd78df_0  
+⋮
+</pre></div>
+</div>
+<p>In our above <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> command, no specific version of any package was
+specified, so the latest package was installed by default. In this case, the
+latest available Python package was a flavor of version 3.10.</p>
+<p>If we wanted to specify a different version of Python, we could do so by
+specifying the version at install: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python=3.6</span> <span class="pre">...</span></code></p>
+</div>
+<div class="section" id="replicating-environments">
+<h3>Replicating Environments<a class="headerlink" href="#replicating-environments" title="Permalink to this headline">#</a></h3>
+<p>We can now communicate to others which versions of each package we have
+installed. We can list these packages into a machine-readable <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>
+file using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda env <span class="nb">export</span> &gt; environment.yml
+</pre></div>
+</div>
+<p>If we open the newly-created file, we’ll see similar information to the output
+of our <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> command.</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>name: first-steps
+channels:
+  - defaults
+dependencies:
+  - ⋮
+  - matplotlib=3.5.1=py310hecd8cb5_1
+  - matplotlib-base=3.5.1=py310hfb0c5b7_1
+    ⋮
+  - numpy=1.22.3=py310hdcd3fac_0
+  - numpy-base=1.22.3=py310hfd2de13_0
+    ⋮
+  - pandas=1.4.2=py310he9d5cce_0
+    ⋮
+  - pip=21.2.4=py310hecd8cb5_0
+    ⋮
+  - python=3.10.4=hdfd78df_0
+  - python-dateutil=2.8.2=pyhd3eb1b0_0
+    ⋮
+prefix: /opt/anaconda3/envs/first-steps
+</pre></div>
+</div>
+<p>Now when we distribute this folder to colleagues, we can have them install all
+of the required packages at once by specifying the environment file upon
+creation, which has the environment name, channels, dependencies, and prefix
+specified.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda create --file environment.yml
+</pre></div>
+</div>
+<div class="section" id="best-practice">
+<h4>Best Practice<a class="headerlink" href="#best-practice" title="Permalink to this headline">#</a></h4>
+<p>When we are developing our project, we might not know at the start which
+packages we will use. Only after finding community packages and browsing
+StackExchange posts will we come across a solution that does what we need.
+Specify your environment dependencies when you are ready to share your
+project—after you have found a stable working solution.</p>
+<p>One potential problem with the above <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file is that it is
+unnecessarily verbose. It is hard to discern which packages are the core
+requirements. In this case, it was <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. These
+were the ones we explicitly told Conda to install; all of the others just came
+along for the ride, some of which may be incompatible with other operating
+systems.</p>
+<p>Only specify the core requirements and let our colleagues’ machine figure out
+which dependencies to grab.</p>
+<p>To include only packages that came from an explicit <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> command, we can modify our export command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda env <span class="nb">export</span> --from-history &gt; environment.yml
+</pre></div>
+</div>
+<p>Note that if using this method, you lose the explicit versioning of each
+package unless you specified the package version in your <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span></code>
+command.</p>
+<p>If you make use of many extended third-party solutions, version compatibility
+matters for legacy support. If you are not going to maintain your project, you
+should include explicit versions so that if system calls or APIs are
+fundamentally changed in a later upgrade to a core package, the logic in your
+functions doesn’t break.</p>
+<p>When you are developing new projects, aim to use the most up-to-date packages
+available unless you have explicit reason not to. This might mean that you
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> the default latest packages, but then edit
+your <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file to include your current package versions before you
+publish your code for long-term archiving.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/45197777/how-do-i-update-anaconda">How do I update Anaconda?</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exploring-python">
+<h2>Exploring Python<a class="headerlink" href="#exploring-python" title="Permalink to this headline">#</a></h2>
+<p>We’ve installed Python and some basic packages in a dedicated virtual
+environment. We’ll create a pipeline of commands to investigate our data from
+earlier lessons.</p>
+<div class="section" id="python-in-the-terminal">
+<h3>Python in the terminal<a class="headerlink" href="#python-in-the-terminal" title="Permalink to this headline">#</a></h3>
+<p>All Python commands are executed in a dedicated computing environment known as
+a <em>kernel</em>, which keeps track of stored variables, objects, and imported
+modules.</p>
+<p>The fastest, but perhaps clumsiest, way to create a new kernel and start using
+Python is to invoke it from the terminal. We’ll start with this method because
+it highlights some key principles behind object creation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ python
+Python <span class="m">3</span>.10.4 <span class="o">(</span>main, Mar <span class="m">31</span> <span class="m">2022</span>, <span class="m">03</span>:38:35<span class="o">)</span> <span class="o">[</span>Clang <span class="m">12</span>.0.0 <span class="o">]</span> on darwin
+Type <span class="s2">"help"</span>, <span class="s2">"copyright"</span>, <span class="s2">"credits"</span> or <span class="s2">"license"</span> <span class="k">for</span> more information.
+&gt;&gt;&gt; 
+</pre></div>
+</div>
+<p>Your prompt will change to a Python session, indicated by the syntax <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>.
+Some existing terminal variables, like the current working directory, are
+shared with the newly created Python interpreter. This means that files can be
+accessed from paths relative to where you started your Python session.</p>
+<p>Once in a session, commands are entered much like they are in a Bash terminal,
+followed by <kbd>Enter</kbd>. Variables and objects created in this session are
+erased when you close the terminal or exit the Python interpreter with the
+<code class="docutils literal notranslate"><span class="pre">exit()</span></code> command.</p>
+<p>We can make use of third-party packages only after explicitly importing them
+into a kernel. Modules (functions) from a library can be accessed via <em>dot
+notation</em> using the <code class="docutils literal notranslate"><span class="pre">library.module</span></code> syntax. Any sub-modules, if they exist,
+can be accessed by chaining together calls with an extra <code class="docutils literal notranslate"><span class="pre">.</span></code> as in
+<code class="docutils literal notranslate"><span class="pre">libary.module.submodule</span></code>.</p>
+<p>Let’s import the <em>pandas</em> library so that we may read data from a file into a
+DataFrame object using the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Find help on a function with the built-in <code class="docutils literal notranslate"><span class="pre">help()</span></code> command.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'room-temp/2021-08-01_room-temp_results.txt'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">       0    1</span>
+<span class="go">0    530  353</span>
+<span class="go">1    531  280</span>
+<span class="go">2    532  272</span>
+<span class="go">3    533  335</span>
+<span class="go">4    534  276</span>
+<span class="go">..   ...  ...</span>
+<span class="go">166  696  336</span>
+<span class="go">167  697  284</span>
+<span class="go">168  698  332</span>
+<span class="go">169  699  329</span>
+<span class="go">170  700  275</span>
+
+<span class="go">[171 rows x 2 columns]</span>
+</pre></div>
+</div>
+<p>We specified the file path from the working directory in which Python was
+started, and we told <em>pandas</em> to parse the data using the tab character <code class="docutils literal notranslate"><span class="pre">\t</span></code>.
+We further specified that there are no header rows that label the columns.
+The output is displayed as a dataframe of 171 rows and 2 columns.</p>
+<p>We can see our data in the terminal, but if we want to use it later, we’ll need
+to store it in a variable. This is done with the assignment operator <code class="docutils literal notranslate"><span class="pre">=</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'room-temp/2021-08-01_room-temp_results.txt'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is no visible feedback after assignment, but we can see the result of our
+assignment by calling the variable by itself in the terminal.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_data</span>
+<span class="go">       0    1</span>
+<span class="go">0    530  353</span>
+<span class="go">1    531  280</span>
+<span class="go">2    532  272</span>
+<span class="go">3    533  335</span>
+<span class="go">4    534  276</span>
+<span class="go">..   ...  ...</span>
+<span class="go">166  696  336</span>
+<span class="go">167  697  284</span>
+<span class="go">168  698  332</span>
+<span class="go">169  699  329</span>
+<span class="go">170  700  275</span>
+
+<span class="go">[171 rows x 2 columns]</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The above syntax is unique to the terminal and only works if the called
+variable is an object and is the last line in a sequence of commands; Python
+assumes you are trying to inspect its contents. To explicitly view the contents
+of a variable in scripts, display them with the <code class="docutils literal notranslate"><span class="pre">print()</span></code> command.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_data</span><span class="p">)</span>
+<span class="go">       0    1</span>
+<span class="go">0    530  353</span>
+<span class="go">1    531  280</span>
+<span class="go">2    532  272</span>
+<span class="go">3    533  335</span>
+<span class="go">4    534  276</span>
+<span class="go">..   ...  ...</span>
+<span class="go">166  696  336</span>
+<span class="go">167  697  284</span>
+<span class="go">168  698  332</span>
+<span class="go">169  699  329</span>
+<span class="go">170  700  275</span>
+
+<span class="go">[171 rows x 2 columns]</span>
+</pre></div>
+</div>
+</div>
+<p>The data here is displayed with some information that hints to us that we are
+looking at a summary of an object and not the raw data itself. The telltale
+sign is that the data ends with some description (in this case, a <code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">x</span> <span class="pre">column</span></code> summary). We can see this explicitly with the following commands.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">my_data</span><span class="p">)</span>
+<span class="go">&lt;class 'pandas.core.frame.DataFrame'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">my_data</span><span class="p">)</span>
+<span class="go">140363763645984</span>
+</pre></div>
+</div>
+<p>This means that <code class="docutils literal notranslate"><span class="pre">my_data</span></code> is a member of a class created by <em>pandas</em> and is
+located at a register location that is unique to the running kernel. If we
+ended our Python session and executed these same commands, we would see a
+different ID. These IDs are handled by Python, but are made available to
+external programs through APIs, which allows for clever integration of Python
+into external editors, applications, or web pages.</p>
+<p>The importance of this statement is that <mark>stored variables only exist so
+long as the kernel exists</mark>. This matters when we get to notebooks, where
+we might expect variables to be the same across execution, but whose results
+might be altered by potentially destructive commands.</p>
+<div class="section" id="plotting">
+<h4>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h4>
+<p>One object that is frequently overwritten is a plot object from <em>matplotlib</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">my_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">my_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x7fa9001aae90&gt;]</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Note the different syntax in this import statement. The <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">long.module.name</span> <span class="pre">as</span> <span class="pre">abbr</span></code> convention allows us to shorten a long module name
+into an shorter one, meaning that function calls of the form
+<code class="docutils literal notranslate"><span class="pre">long.module.name.function()</span></code> can be shortened to <code class="docutils literal notranslate"><span class="pre">abbr.function()</span></code>. We are
+free to use any abbreviation on import, but common abbreviations exist for
+standard libraries, so it is good practice to stick to existing conventions
+when you see them in other tutorials.</p>
+</div>
+<p>The above command uses the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function in <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> to plot the
+first argument (<code class="docutils literal notranslate"><span class="pre">my_data[0]</span></code>) against the second argument (<code class="docutils literal notranslate"><span class="pre">my_data[1]</span></code>). The
+<code class="docutils literal notranslate"><span class="pre">[0]</span></code> and <code class="docutils literal notranslate"><span class="pre">[1]</span></code> syntax specifies that we want the first and second columns,
+respectively, from our <code class="docutils literal notranslate"><span class="pre">my_data</span></code> DataFrame object. Note that python starts
+counting the indices from zero.</p>
+<p>Nothing exciting happens after this command, but we can see that an object was
+created at some memory address. We can display this in the terminal with the
+<code class="docutils literal notranslate"><span class="pre">show()</span></code> command in <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This displays a plot in a separate window and pauses further terminal
+execution. When you close the plotting window, the Python terminal resumes
+normal operation.</p>
+<p>The fact that we need to close the plotting window for the terminal to resume
+normal operation is slightly annoying. We might want to look at this object
+after we’ve closed the plot window and executed more Python commands. If
+you were to call this plot again with a <code class="docutils literal notranslate"><span class="pre">show()</span></code> function, you will see
+nothing.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/50452455/plt-show-does-nothing-when-used-for-the-second-time">plt.show() does nothing when used for the second time</a></p>
+</div>
+<p>This is by design; when <code class="docutils literal notranslate"><span class="pre">show()</span></code> is called, the current figure (as defined by the
+last created plot object) is displayed and then emptied. This is designed so
+that extra settings like figure labels and titles are not inadvertently applied
+to all future plots after being set in the first figure.</p>
+<p>If you want to keep the figure object for future inspection, assign it to a variable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>          <span class="c1"># Initializes current figure</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>    <span class="c1"># Adds to current figure</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># Shows plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># Shows plot again</span>
+</pre></div>
+</div>
+<p>We will run across other common functions that build, alter, and empty objects
+as we interact with them. These functions are commonly used for interactive
+exploration and not for storage, but interactive exploration is in many ways
+better than building a script in the terminal. Interactive and iterative
+exploration is better achieved in a mixed format document known as a <em>Jupyter
+Notebook</em>.</p>
+</div>
+</div>
+<div class="section" id="python-in-a-jupyter-notebook">
+<h3>Python in a Jupyter Notebook<a class="headerlink" href="#python-in-a-jupyter-notebook" title="Permalink to this headline">#</a></h3>
+<p>The Anaconda distribution comes with <em>Jupyter Notebook</em> pre-installed. This can
+be launched as a web-app from the Anaconda Navigator pane. I recommend the more
+modern <em>Jupyter Lab</em>, which is backwards compatible with <em>Jupyter Notebook</em> but
+includes quality of life enhancements to the user experience. <em>Jupyter Lab</em> also
+comes pre-installed from the Anaconda distribution and is slated to fully
+replace <em>Jupyter Notebooks</em>.</p>
+<p>If you launch <em>Jupyter Lab</em> from Anaconda Navigator, it will launch from your
+home directory in the default <code class="docutils literal notranslate"><span class="pre">(base)</span></code> Conda environment. We already took
+special care to separate our <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder into its own virtual
+environment, which doesn’t have a <em>Jupyter Notebook</em> or <em>Jupyter Lab</em> instance
+installed. We can fix this by manually installing <em>Jupyter Lab</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda install jupyterlab
+</pre></div>
+</div>
+<p>Launch <em>Jupyter Lab</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ jupyter lab
+</pre></div>
+</div>
+<p>This command launches a Jupyter server and opens a browser to the linked web
+application. This server approach allows for linked calls to common resources
+hosted on the same instance. It also allows for advanced users to host their
+Python interpreter over an IP address accessible to authorized users over LAN.
+We’ll work on a local file server, commonly located at 127.0.0.1 (reserved IP
+address for local computer, also known as <em>localhost</em>), on port 8888. This is
+the default address when you open <em>Jupyter Lab</em>, unless you edit your Jupyter
+configuration file.</p>
+<p>In <em>Jupyter Lab</em>, we can browse accessible files in the left pane.</p>
+<p><img alt="Jupyter Lab Splash Page" src="../../_images/jupyter-splash.png"/></p>
+<p>Because we installed <em>Jupyter Lab</em> in our custom virtual environment and
+launched it from our <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder, the root directory of Jupyter Lab
+only sees the contents of of <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder. The benefit of this approach
+is that in this session we can specify all filenames as relative to the
+<code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder (current working directory), which results in more
+convenient file access from scripts in our folder. The more important result of
+this approach is that Jupyter now knows about the virtual environment we set up
+in the beginning of this lesson. The downside of this approach is that we
+cannot easily access files in folders outside of <code class="docutils literal notranslate"><span class="pre">first-steps</span></code>.</p>
+<p>Open a new Python 3 Notebook (ipykernel). Copy the commands we ran in our
+previous terminal session.</p>
+<p><img alt="Jupyter Notebook" src="../../_images/jupyter-first-steps-1.png"/></p>
+<p>Commands are executed in a notebook with <kbd>Shift</kbd> + <kbd>Enter</kbd>. A
+notebook allows us to separate commands across executable cells. We can
+re-execute cells out of logical order, which is useful if you want to
+purposefully reset some conditions without re-running an entire script from
+scratch. This is only advisable for quickly testing conditions, and it is
+important to maintain a top-down execution flow for public-facing notebooks.</p>
+<p>Notebooks allow us to insert comments and explanations to the end user as
+markdown blocks. It’s good practice to help new users navigate your notebook.
+Insert a cell block at the beginning of the document to describe the purpose of
+this notebook. Find the dropdown menu near the title that reads <code class="docutils literal notranslate"><span class="pre">Code</span></code> and
+switch it to <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.</p>
+<p><img alt="Jupyter Markdown Cells" src="../../_images/jupyter-first-steps-2.png"/></p>
+<p>Finally, plot the results. We’ll also add a title and some labels to identify
+the axes.</p>
+<p><img alt="Jupyter First Plot" src="../../_images/jupyter-first-steps-3.png"/></p>
+<p>This plot is particularly uninteresting; the data was contrived to be a random
+set of values between 256–356 for all wavelengths.</p>
+<p>If we need to share this figure with our colleagues, we can save this figure
+using the <code class="docutils literal notranslate"><span class="pre">savefig()</span></code> command from <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>.</p>
+<p>Remember that the <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> command clears the figure from Python’s drawing
+canvas, so if we do wish to save a figure, we need to call the <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code>
+command before the <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> command.</p>
+<p>Alternatively, since we already initiated our <code class="docutils literal notranslate"><span class="pre">plt</span></code> instance and assigned it to
+a variable <code class="docutils literal notranslate"><span class="pre">fig</span></code>, we can simply call the <code class="docutils literal notranslate"><span class="pre">savefig()</span></code> function on our saved
+object with <code class="docutils literal notranslate"><span class="pre">fig.savefig()</span></code>. This allows us to save figures after we have
+cleared them from the canvas with <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p>
+<p><img alt="Saving a figure" src="../../_images/jupyter-first-steps-4.png"/></p>
+<p>You’ll notice a <code class="docutils literal notranslate"><span class="pre">sample_plot.png</span></code> file appear in the file browser on the left.
+By default, the figure is saved in the same directory as the running notebook,
+meaning the root of the <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder in this case.</p>
+<div class="section" id="closing-a-notebook">
+<h4>Closing a notebook<a class="headerlink" href="#closing-a-notebook" title="Permalink to this headline">#</a></h4>
+<p>Closing the Jupyter instance in your browser does not release the Python kernel
+at the system level. This means that your computer is still holding on to the
+values in memory until it loses power. If you make a habit of leaving your
+computer on all the time, after enough improperly closed Jupyter instances,
+your computer may operate more sluggishly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In a terminal, the Python kernel is released when you run the <code class="docutils literal notranslate"><span class="pre">exit()</span></code> command
+in a Python instance, or when you close your terminal session.</p>
+</div>
+<p>The proper way to close a notebook is to shut down the kernel. This can be done
+in <em>Jupyter Lab</em> in the left-hand pane or in the menu tab for <em>Kernel</em>.</p>
+<p><img alt="Closing Jupyter" src="../../_images/jupyter-first-steps-5.png"/></p>
+<p>If you already closed your browser and can’t easily access these menus, you can
+end all kernels from the terminal responsible for handling the Jupyter instance
+by typing <kbd>Ctrl</kbd> + <kbd>C</kbd>. In Windows, you can also search for
+running instances of Python in <em>Task Manager</em> and manually <em>End Process</em> for
+these tasks.</p>
+</div>
+</div>
+<div class="section" id="python-in-a-script">
+<h3>Python in a script<a class="headerlink" href="#python-in-a-script" title="Permalink to this headline">#</a></h3>
+<p>Notebooks are good for quickly putting together some code and seeing the
+results, but they lack some key principles.</p>
+<p>Notebooks do not:</p>
+<ol class="simple">
+<li><p>Enforce sequential execution.</p></li>
+<li><p>Integrate well with version control.</p></li>
+</ol>
+<p>We can attempt to solve the first problem by agreeing to write code that is
+logically carried out from top to bottom. The second problem is handled through
+the use of a Jupyter extension, <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/"><em>Jupytext</em></a>.</p>
+<p>Jupytext allows simple Python scripts to be opened as a notebook in <em>Jupyter
+Lab</em>, giving you the flexibility and familiarity of notebook execution while
+maintaining a simple plain text file that tracks better in version control
+systems like Git.</p>
+<p>To install this into our <code class="docutils literal notranslate"><span class="pre">(first-steps)</span></code> virtual environment, it will be easier
+if we close our Jupyter instance. Shut down any open kernels and navigate back
+to <code class="docutils literal notranslate"><span class="pre">first-steps</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>first-steps<span class="o">)</span> ~/Computing-Essentials/first-steps $ conda install jupytext -c conda-forge
+</pre></div>
+</div>
+<p>Then start a new <em>Jupyter Lab</em> instance and navigate back to our previous
+<em>Jupyter Notebook</em>.</p>
+<p>Jupytext can convert an existing <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook to a plain <code class="docutils literal notranslate"><span class="pre">.py</span></code> script
+file. From the notebook you wish to convert, open the Jupyter command palette
+(View &gt; Activate Command Palette) and search for <code class="docutils literal notranslate"><span class="pre">Jupytext</span></code>. Select the option
+to <em>Pair Notebook with light Script</em>, then save the notebook. A script with the
+same filename as the notebook will be created, but it will end in <code class="docutils literal notranslate"><span class="pre">.py</span></code>.</p>
+<p><img alt="Pairing with light Script" src="../../_images/jupyter-first-steps-6.png"/></p>
+<p>This file can be opened in a text editor—the same way we may have edited our
+Bash scripts. More conveniently, we can open this file in <em>Jupyter Lab</em> as if it
+were a notebook, complete with its rich output and formatting. Simply
+right-click on the file in <em>Jupyter Lab</em> and select <em>Open with &gt; Notebook</em>.</p>
+<p><img alt="Opening scripts as notebooks" src="../../_images/jupyter-first-steps-7.png"/></p>
+<p>The newly opened file will look identical to the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file we worked with
+before. Any changes applied to one file will automatically be applied to the
+other, irrespective of which file was created first.
+You can also choose to open new <code class="docutils literal notranslate"><span class="pre">.py</span></code> files as notebooks without first creating
+any <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Light Script files do not save figure outputs in the notebook presentation upon
+reopening. If you wish for figures to be preserved locally to you upon
+reopening the notebook, you should pair your <code class="docutils literal notranslate"><span class="pre">.py</span></code> file with a <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>
+notebook. After pairing, any save in one file will automatically create and
+update the corresponding counterpart. In this case, only one of these files
+needs to be put under version control.</p>
+</div>
+</div>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
+<p>You know how to read data into a pandas DataFrame for one file, but you’d like
+to inspect all of the files in the <code class="docutils literal notranslate"><span class="pre">high-temp/</span></code> and <code class="docutils literal notranslate"><span class="pre">room-temp/</span></code> directories
+and search for the maximum value in each month.</p>
+<p>You may make use of the <a class="reference external" href="https://docs.python.org/3/library/glob.html"><code class="docutils literal notranslate"><span class="pre">glob</span></code></a> package to search for files based on
+Unix style pathname pattern extension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="n">my_matched_files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s1">'search pattern from current notebook directory'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, the matches are returned as a list, which is an <em>iterable</em>, meaning it
+can serve as the object of a <em>for loop</em>.</p>
+<p>You may also make use of the <code class="docutils literal notranslate"><span class="pre">DataFrame.max()</span></code> function, which is called on a
+<em>DataFrame</em> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">max_value</span> <span class="o">=</span> <span class="n">my_dataframe</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Create a Python script <code class="docutils literal notranslate"><span class="pre">find_max.py</span></code> that finds the maximum spectroscopic
+signal across all data files in a given month. The script should overwrite the
+results to a <code class="docutils literal notranslate"><span class="pre">summary.csv</span></code> that includes <code class="docutils literal notranslate"><span class="pre">Month,</span> <span class="pre">Max</span></code> pairs in a column, where
+<code class="docutils literal notranslate"><span class="pre">Month</span></code> is expressed as an integer and <code class="docutils literal notranslate"><span class="pre">Max</span></code> represents the maximum counts
+across all spectra in that month.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Consider using a DataFrame to store your matches, then writing to a csv file
+via <code class="docutils literal notranslate"><span class="pre">DataFrame.to_csv()</span></code></p>
+</div>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Commit your new <code class="docutils literal notranslate"><span class="pre">find_max.py</span></code> script to your repository.</p>
+</div>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Commit the results of your updated <code class="docutils literal notranslate"><span class="pre">summary.csv</span></code> after the <code class="docutils literal notranslate"><span class="pre">find_max.py</span></code> script
+has run.</p>
+</div>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file for the <code class="docutils literal notranslate"><span class="pre">first-steps</span></code> folder that includes
+only core packages necessary for this project, then commit this file to your
+<code class="docutils literal notranslate"><span class="pre">first-steps</span></code> repository.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We won’t need our <code class="docutils literal notranslate"><span class="pre">jupyter-first-steps.ipynb</span></code> or our <code class="docutils literal notranslate"><span class="pre">sample_plot.png</span></code> for
+future lessons. You may safely discard these, but you you may commit them if
+you wish.</p>
+</div>
+</div>
 </div>
 <script type="text/x-thebe-config">
     {
@@ -319,8 +949,47 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">First steps with Python</a><ul>
+<li><a class="reference internal" href="#setting-up-a-python-environment">Setting up a Python environment</a><ul>
+<li><a class="reference internal" href="#installing-packages">Installing Packages</a></li>
+<li><a class="reference internal" href="#replicating-environments">Replicating Environments</a><ul>
+<li><a class="reference internal" href="#best-practice">Best Practice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exploring-python">Exploring Python</a><ul>
+<li><a class="reference internal" href="#python-in-the-terminal">Python in the terminal</a><ul>
+<li><a class="reference internal" href="#plotting">Plotting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#python-in-a-jupyter-notebook">Python in a Jupyter Notebook</a><ul>
+<li><a class="reference internal" href="#closing-a-notebook">Closing a notebook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#python-in-a-script">Python in a script</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

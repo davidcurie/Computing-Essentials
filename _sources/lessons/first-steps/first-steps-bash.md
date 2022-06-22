@@ -171,13 +171,13 @@ We can match more complicated patterns. Some examples:
 | `a?`       | zero or one of _a_                                        |
 | `a+`       | one or more or _a_                                        |
 | `a{3}`     | exactly 3 of _a_                                          |
-| `a{3,}     | 3 or more of _a_                                          |
+| `a{3,}`     | 3 or more of _a_                                          |
 | `.`        | any character                                             |
 
 Under extended regex syntax (`-E` flag), you may also use capturing groups by
 enclosing your desired matching expression in `()`. This allows you to
 rearrange groups of matches in your `replace` syntax by referencing the
-matching groups.
+matching groups as numeric variables corresponding to the order of the matches.
 
 ```{seealso}
 [Regex101](https://www.regex101.com): helpful interactive construction syntax
