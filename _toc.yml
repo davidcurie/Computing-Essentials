@@ -8,5 +8,7 @@ parts:
   - file: docs/getting-started
 - caption: Lessons
   chapters:
-  - glob: lessons/first-steps/first-steps*
-  - glob: lessons/git/git-paper
+  - file: lessons/first-steps/first-steps-bash
+  - file: lessons/first-steps/first-steps-git
+  - file: lessons/git/git-paper
+  - file: lessons/first-steps/first-steps-python
