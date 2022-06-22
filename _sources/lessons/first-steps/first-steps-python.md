@@ -1,4 +1,4 @@
-# First steps with Python
+# First Steps with Python
 
 ```{admonition} Prerequisites
 - Conda package manager (part of Anaconda or Miniconda)
