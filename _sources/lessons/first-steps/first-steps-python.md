@@ -111,7 +111,7 @@ terminal, it will revert to the default `(base)` environment.
 
 Our `first-steps` environment currently has no packages installed, not even
 `python`. We'll need a few plotting tools on top of the base distribution of
-Python. We can install multiple packages with _conda_ into our existing
+Python. We can install multiple packages with _Conda_ into our existing
 environment.
 
 ```bash
@@ -210,7 +210,7 @@ Only specify the core requirements and let our colleagues' machine figure out
 which dependencies to grab.
 
 To include only packages that came from an explicit `conda install` or `pip
-install` command, we can modify our export command.
+install` command, we can modify our export command with the `--from-history` flag.
 
 ```bash
 (first-steps) ~/Computing-Essentials/first-steps $ conda env export --from-history > environment.yml
@@ -279,13 +279,6 @@ can be accessed by chaining together calls with an extra `.` as in
 Let's import the _pandas_ library so that we may read data from a file into a
 DataFrame object using the `read_csv()` function.
 
-````{tip}
-Find help on a function with the built-in `help()` command.
-```python
-help(pandas.read_csv)
-```
-````
-
 ```python
 >>> import pandas
 >>> pandas.read_csv('room-temp/2021-08-01_room-temp_results.txt', delimiter='\t', header=None)
@@ -304,6 +297,13 @@ help(pandas.read_csv)
 
 [171 rows x 2 columns]
 ```
+
+````{tip}
+Find help on a function with the built-in `help()` command.
+```python
+help(pandas.read_csv)
+```
+````
 
 We specified the file path from the working directory in which Python was
 started, and we told _pandas_ to parse the data using the tab character `\t`.
@@ -375,12 +375,13 @@ column` summary). We can see this explicitly with the following commands.
 140363763645984
 ```
 
-This means that `my_data` is a member of a class created by _pandas_ and is
-located at a register location that is unique to the running kernel. If we
-ended our Python session and executed these same commands, we would see a
-different ID. These IDs are handled by Python, but are made available to
-external programs through APIs, which allows for clever integration of Python
-into external editors, applications, or web pages.
+The first command tells us that `my_data` is a member of a class created by
+_pandas_, and the second command tells us that this object is located at a
+register location that is unique to the running kernel. If we ended our Python
+session and executed these same commands, we would see a different ID. These
+IDs are handled by Python, but are made available to external programs through
+APIs, which allows for clever integration of Python into external editors,
+applications, or web pages.
 
 The importance of this statement is that <mark>stored variables only exist so
 long as the kernel exists</mark>. This matters when we get to notebooks, where
