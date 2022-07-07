@@ -672,7 +672,7 @@ max_value = my_dataframe.max()
 ```
 
 ```{topic} Task
-Create a Python script `find_max.py` that finds the maximum spectroscopic
+Create a Python script `find-max.py` that finds the maximum spectroscopic
 signal across all data files in a given month. The script should overwrite the
 results to a `summary.csv` that includes `Month, Max` pairs in a column, where
 `Month` is expressed as an integer and `Max` represents the maximum counts
@@ -685,11 +685,11 @@ via `DataFrame.to_csv()`
 ```
 
 ```{topic} Task
-Commit your new `find_max.py` script to your repository.
+Commit your new `find-max.py` script to your repository.
 ```
 
 ```{topic} Task
-Commit the results of your updated `summary.csv` after the `find_max.py` script
+Commit the results of your updated `summary.csv` after the `find-max.py` script
 has run.
 ```
 

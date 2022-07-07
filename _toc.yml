@@ -12,3 +12,4 @@ parts:
   - file: lessons/first-steps/first-steps-git
   - file: lessons/git/git-paper
   - file: lessons/first-steps/first-steps-python
+  - file: lessons/next-steps/next-steps-python
