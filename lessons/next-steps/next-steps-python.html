@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="First Steps with Python" href="first-steps-python.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="First Steps with Python" href="../first-steps/first-steps-python.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>Next Steps with Python - Computing Essentials</title>
@@ -260,10 +260,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="first-steps-bash.html">First Steps with Bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="first-steps-git.html">First Steps with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-steps/first-steps-bash.html">First Steps with Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-steps/first-steps-git.html">First Steps with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../git/git-paper.html">Git for Academic Papers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="first-steps-python.html">First Steps with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-steps/first-steps-python.html">First Steps with Python</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Next Steps with Python</a></li>
 </ul>
 
@@ -324,7 +324,7 @@ functions.</p>
 <h2>A sample solution<a class="headerlink" href="#a-sample-solution" title="Permalink to this headline">#</a></h2>
 <p>As a reminder of our task, we were asked to search through our sorted data and
 find the maximum value for our spectrometer counts per month. The following
-script does that. You may find a copy of this initial script <a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find_max.py">here</a>.</p>
+script does that. You may find a copy of this initial script <a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find-max.py">here</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 
@@ -339,7 +339,7 @@ script does that. You may find a copy of this initial script <a class="reference
           <span class="mi">9</span><span class="p">:</span> <span class="s2">"September"</span><span class="p">,</span>
          <span class="mi">10</span><span class="p">:</span> <span class="s2">"October"</span><span class="p">,</span>
          <span class="mi">11</span><span class="p">:</span> <span class="s2">"November"</span><span class="p">,</span>
-         <span class="mi">12</span><span class="p">:</span> <span class="s2">"December"</span>
+         <span class="mi">12</span><span class="p">:</span> <span class="s2">"December"</span><span class="p">,</span>
          <span class="p">}</span>
 
 <span class="c1"># Search through months by int, name pair in 2021.</span>
@@ -380,7 +380,7 @@ simultaneously.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>MONTHS = {1: "January",
           2: "February",
           ⋮ 
-         12: "December"
+         12: "December",
          }
 </pre></div>
 </div>
@@ -671,6 +671,30 @@ existing contents from previous runs.</p></li>
 <li><p>Append only new data to the results.</p></li>
 </ol>
 </div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
+<div class="topic">
+<p class="topic-title">Task</p>
+<p>Make improvements to your <code class="docutils literal notranslate"><span class="pre">find-max.py</span></code> file to make use of functions.</p>
+<p>You may use the sample solution at the beginning of this lesson as a starting
+point. Consider incorporating the suggested improvements outlined above by
+filling in the logic for the functions declared in the outline.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">find-max.py</span></code> script should do the following by default:</p>
+<ul class="simple">
+<li><p>Gather all files in room-temp/ and high-temp/ folders</p></li>
+<li><p>Sort files based on month</p></li>
+<li><p>Find the maxiumum spectroscopic count of each month</p></li>
+<li><p>Write the results to <code class="docutils literal notranslate"><span class="pre">summary.csv</span></code> in the same order the files were grouped</p></li>
+</ul>
+<p>Once all of your functions are defined, see if you can execute the main logic
+of the above pipeline in 10 lines of code or less.</p>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Challenge</p>
+<p>Extend the <code class="docutils literal notranslate"><span class="pre">find-max.py</span></code> script to append uniquely new results to <code class="docutils literal notranslate"><span class="pre">summary.csv</span></code>
+instead of overwriting on each execution.</p>
+</div>
+</div>
 <div class="section" id="more-resources">
 <h2>More Resources<a class="headerlink" href="#more-resources" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -694,7 +718,7 @@ Classes)</a> (Video: 1:02:29)</p></li>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./lessons/first-steps"
+            path: "./lessons/next-steps"
         },
         predefinedOutput: true
     }
@@ -706,7 +730,7 @@ Classes)</a> (Video: 1:02:29)</p></li>
         
         <div class="related-pages">
           
-          <a class="prev-page" href="first-steps-python.html">
+          <a class="prev-page" href="../first-steps/first-steps-python.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
@@ -758,6 +782,7 @@ Classes)</a> (Video: 1:02:29)</p></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#make-it-idempotent">Make it idempotent</a></li>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
 <li><a class="reference internal" href="#more-resources">More Resources</a></li>
 </ul>
 </li>

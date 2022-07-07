@@ -24,7 +24,7 @@ As a reminder of our task, we were asked to search through our sorted data and
 find the maximum value for our spectrometer counts per month. The following
 script does that. You may find a copy of this initial script [here][solution].
 
-[solution]: https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find_max.py
+[solution]: https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find-max.py
 
 ```python
 import pandas as pd
@@ -41,7 +41,7 @@ MONTHS = {1: "January",
           9: "September",
          10: "October",
          11: "November",
-         12: "December"
+         12: "December",
          }
 
 # Search through months by int, name pair in 2021.
@@ -84,7 +84,7 @@ The basic premise of the script is as follows:
     MONTHS = {1: "January",
               2: "February",
               ⋮ 
-             12: "December"
+             12: "December",
              }
     ```
 
@@ -397,6 +397,31 @@ There are two potential solutions to this problem:
 1. Write all of the columns of the dataframe in one step, overwriting the
 existing contents from previous runs.
 2. Append only new data to the results.
+
+## Instructions
+
+```{topic} Task
+Make improvements to your `find-max.py` file to make use of functions.
+
+You may use the sample solution at the beginning of this lesson as a starting
+point. Consider incorporating the suggested improvements outlined above by
+filling in the logic for the functions declared in the outline.
+
+The `find-max.py` script should do the following by default:
+- Gather all files in room-temp/ and high-temp/ folders
+- Sort files based on month
+- Find the maxiumum spectroscopic count of each month
+- Write the results to `summary.csv` in the same order the files were grouped
+
+Once all of your functions are defined, see if you can execute the main logic
+of the above pipeline in 10 lines of code or less.
+```
+
+```{admonition} Challenge
+:class: important
+Extend the `find-max.py` script to append uniquely new results to `summary.csv`
+instead of overwriting on each execution.
+```
 
 ## More Resources
 
