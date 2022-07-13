@@ -24,7 +24,7 @@ As a reminder of our task, we were asked to search through our sorted data and
 find the maximum value for our spectrometer counts per month. The following
 script does that. You may find a copy of this initial script [here][solution].
 
-[solution]: https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find-max.py
+[solution]: https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find_max.py
 
 ```python
 import pandas as pd
@@ -401,13 +401,13 @@ existing contents from previous runs.
 ## Instructions
 
 ```{topic} Task
-Make improvements to your `find-max.py` file to make use of functions.
+Make improvements to your `find_max.py` file to make use of functions.
 
 You may use the sample solution at the beginning of this lesson as a starting
 point. Consider incorporating the suggested improvements outlined above by
 filling in the logic for the functions declared in the outline.
 
-The `find-max.py` script should do the following by default:
+The `find_max.py` script should do the following by default:
 - Gather all files in room-temp/ and high-temp/ folders
 - Sort files based on month
 - Find the maxiumum spectroscopic count of each month
@@ -419,7 +419,7 @@ of the above pipeline in 10 lines of code or less.
 
 ```{admonition} Challenge
 :class: important
-Extend the `find-max.py` script to append uniquely new results to `summary.csv`
+Extend the `find_max.py` script to append uniquely new results to `summary.csv`
 instead of overwriting on each execution.
 ```
 
