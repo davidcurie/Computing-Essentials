@@ -13,3 +13,4 @@ parts:
   - file: lessons/git/git-paper
   - file: lessons/first-steps/first-steps-python
   - file: lessons/next-steps/next-steps-python
+  - file: lessons/refactoring-basics/refactoring-basics
