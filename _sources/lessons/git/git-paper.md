@@ -1,7 +1,7 @@
 # Git for Academic Papers
 
 ```{admonition} Prerequisites
-- [Git-It](http://jlord.us/git-it) tutorial
+- [Git-It](https://github.com/jlord/git-it-electron) tutorial
 - First Steps with Git
 ```
 

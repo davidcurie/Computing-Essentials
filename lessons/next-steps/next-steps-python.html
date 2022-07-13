@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="First Steps with Python" href="../first-steps/first-steps-python.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Refactoring Basics" href="../refactoring-basics/refactoring-basics.html" /><link rel="prev" title="First Steps with Python" href="../first-steps/first-steps-python.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>Next Steps with Python - Computing Essentials</title>
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../git/git-paper.html">Git for Academic Papers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-steps/first-steps-python.html">First Steps with Python</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Next Steps with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refactoring-basics/refactoring-basics.html">Refactoring Basics</a></li>
 </ul>
 
 </div>
@@ -324,7 +325,7 @@ functions.</p>
 <h2>A sample solution<a class="headerlink" href="#a-sample-solution" title="Permalink to this headline">#</a></h2>
 <p>As a reminder of our task, we were asked to search through our sorted data and
 find the maximum value for our spectrometer counts per month. The following
-script does that. You may find a copy of this initial script <a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find-max.py">here</a>.</p>
+script does that. You may find a copy of this initial script <a class="reference external" href="https://github.com/davidcurie/Computing-Essentials/blob/main/lessons/first-steps/find_max.py">here</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 
@@ -675,11 +676,11 @@ existing contents from previous runs.</p></li>
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
 <div class="topic">
 <p class="topic-title">Task</p>
-<p>Make improvements to your <code class="docutils literal notranslate"><span class="pre">find-max.py</span></code> file to make use of functions.</p>
+<p>Make improvements to your <code class="docutils literal notranslate"><span class="pre">find_max.py</span></code> file to make use of functions.</p>
 <p>You may use the sample solution at the beginning of this lesson as a starting
 point. Consider incorporating the suggested improvements outlined above by
 filling in the logic for the functions declared in the outline.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">find-max.py</span></code> script should do the following by default:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">find_max.py</span></code> script should do the following by default:</p>
 <ul class="simple">
 <li><p>Gather all files in room-temp/ and high-temp/ folders</p></li>
 <li><p>Sort files based on month</p></li>
@@ -691,7 +692,7 @@ of the above pipeline in 10 lines of code or less.</p>
 </div>
 <div class="important admonition">
 <p class="admonition-title">Challenge</p>
-<p>Extend the <code class="docutils literal notranslate"><span class="pre">find-max.py</span></code> script to append uniquely new results to <code class="docutils literal notranslate"><span class="pre">summary.csv</span></code>
+<p>Extend the <code class="docutils literal notranslate"><span class="pre">find_max.py</span></code> script to append uniquely new results to <code class="docutils literal notranslate"><span class="pre">summary.csv</span></code>
 instead of overwriting on each execution.</p>
 </div>
 </div>
@@ -729,7 +730,15 @@ Classes)</a> (Video: 1:02:29)</p></li>
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../refactoring-basics/refactoring-basics.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Refactoring Basics</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="../first-steps/first-steps-python.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
