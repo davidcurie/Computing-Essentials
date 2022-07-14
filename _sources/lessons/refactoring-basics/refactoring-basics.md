@@ -260,8 +260,7 @@ month when there are spaces in the filenames. Then implement changes to
 ```{topic} Task
 Write a unit test that checks whether `sort_filenames()` continutes to sort by
 month when the YYYY-MM-DD substring is not the first part of the filename. Then
-implement changes to `sort_filenames()` so that filenames with spaces don't
-break the workflow.
+implement changes to `sort_filenames()` so that the above condition is met.
 ```
 
 ```{topic} Challenge
