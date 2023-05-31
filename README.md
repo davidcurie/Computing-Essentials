@@ -30,3 +30,19 @@ Use `jupyter-book build . --all` to force a full rebuild.
 ```sh
 jupyter-book . --builder pdflatex
 ```
+
+## Publishing the book on Github pages
+
+Install the ghp-import tool:
+
+```bash
+conda install -c conda-forge ghp-import
+```
+
+Copy the contents of the `_build/` directory to a `gh-pages` branch of the current repository:
+
+```bash
+ghp-import -n -p -f _build/html
+```
+
+> The following command will overwrite the `gh-pages` branch. This workflow assumes you are not managing the `gh-pages` branch manually.
