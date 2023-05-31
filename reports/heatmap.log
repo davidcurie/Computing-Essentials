@@ -1,0 +1,123 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/anaconda3/envs/ce/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# File handling and sorting
+from glob import glob
+import os
+import datetime
+
+
+# Math and plotting
+import pandas as pd
+import numpy as np
+import matplotlib
+import matplotlib.gridspec as gridspec
+import matplotlib.ticker as tck
+# import matplotlib.patches as patches
+from matplotlib import pyplot as plt
+from matplotlib.pyplot import cm
+from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits import axes_grid1
+import plotly.graph_objects as go
+from scipy.ndimage import gaussian_filter
+from scipy.optimize import curve_fit
+from scipy.ndimage import zoom
+
+# https://github.com/garrettj403/SciencePlots
+matplotlib.rcParams.update(matplotlib.rcParamsDefault) # Reset user themes
+plt.style.use(['science']) # Figures sized for publication
+# plt.style.use('notebook') # Large figures for notebook display
+
+def add_colorbar(im, aspect=20, pad_fraction=0.5, **kwargs): # See https://nbviewer.jupyter.org/github/mgeier/python-audio/blob/master/plotting/matplotlib-colorbar.ipynb
+    divider = axes_grid1.make_axes_locatable(im.axes)
+    width = axes_grid1.axes_size.AxesY(im.axes, aspect=1./aspect)
+    pad = axes_grid1.axes_size.Fraction(pad_fraction, width)
+    current_ax = plt.gca()
+    cax = divider.append_axes("right", size=width, pad=pad)
+    plt.sca(current_ax)
+    return im.axes.figure.colorbar(im, cax=cax, **kwargs)
+
+def find_nearest(array, value):
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx
+
+def heat_map(files, npx, npy, stepx, stepy, zmin, zmax, start, end):
+    # Generate physical grid of plotted region based on user input
+    x = np.linspace(0, (npx-1)*stepx, npx)
+    y = np.linspace(0, (npy-1)*stepy, npy)
+    XX, YY = np.meshgrid(x, y)
+
+    # Check if number of files matches expected grid mesh
+    if npx*npy == len(files):
+        # Get the counts for each file
+        Z = []
+        for file in files:
+            df = pd.read_csv(file, header = None)
+            df.columns = ['wavelength', 'counts']
+            Z = Z + [df.counts]
+    else:
+        raise TypeError('Number of files does not match specificied gridsize')
+
+    # Gather the sum of counts in a select Region of Interest (ROI)
+    #    Start: index in df corresponding to beginning of ROI
+    #    End:   index in df corresponding to end of ROI
+    I = [line[start:end].sum() for line in Z]
+    I = np.array(I)
+    I = I.reshape((npy,npx))
+
+    # Display sample spectrum with integration region overlay
+    fig = plt.figure()
+    # plt.plot(df.wavelength.apply(nm_to_cmm1), df.counts)
+    plt.plot(df.wavelength, df.counts)
+    # plt.ylim(0,np.amax(df.counts[start:end])*1.2)
+    plt.ylim(0,np.amax(df.counts)*1.2)
+    # plt.scatter(df.wavelength.apply(nm_to_cmm1)[start:end], np.ones(end - start)*1000, marker='|', s=100000 , color=(0.5,0.5,0.5,0.4))
+    plt.scatter(df.wavelength[start:end], np.ones(end - start)*100, marker='|', s=100000 , color=(0.5,0.5,0.5,0.4))
+    plt.title('Integration Region')
+    # plt.xlabel('Raman shift (cm$^{-1}$)')
+    plt.xlabel('Wavelength (nm)')
+    plt.show()
+
+    # Display heat map
+    plt.figure()
+    heatmap = plt.pcolormesh(XX, YY, I, vmin=zmin, vmax=zmax, shading='auto', cmap='RdBu_r'); 
+    plt.gca().set_aspect('equal')
+    # plt.colorbar()
+    add_colorbar(heatmap)
+    # plt.xlabel('x (um)'); plt.ylabel('y (um)')
+    plt.xlim(0, (npx-1)*stepx)
+    plt.ylim((npy-1)*stepy, 0)
+    # plt.axes('off')
+    
+    plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 8>[0;34m()[0m
+[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mdatetime[39;00m
+[1;32m      7[0m [38;5;66;03m# Math and plotting[39;00m
+[0;32m----> 8[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m      9[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'pandas'
+ModuleNotFoundError: No module named 'pandas'
+

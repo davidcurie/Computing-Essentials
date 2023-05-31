@@ -433,7 +433,7 @@ committed. Let's undo the results of our organization script `clean-data`.
 
 **Question**: From the information provided above, what command can we run that would
 completely revert our directory where the files exist but the filenames are not
-renamed or sorted.
+renamed or sorted?
 
 ````{dropdown} Click to reveal
 ```bash

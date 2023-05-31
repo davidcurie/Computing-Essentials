@@ -1,0 +1,162 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/anaconda3/envs/ce/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/envs/ce/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+import h5py
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from matplotlib.gridspec import GridSpec
+from mpl_toolkits import axes_grid1
+from matplotlib import transforms
+from scipy.signal import find_peaks, savgol_filter, butter, filtfilt
+from scipy.ndimage import median_filter
+from scipy.ndimage.filters import gaussian_filter1d
+from scipy.optimize import curve_fit
+from skimage.restoration import denoise_wavelet
+from sklearn.decomposition import NMF, PCA
+from glob import glob
+import os
+
+blues = mpl.colors.LinearSegmentedColormap.from_list('', ['black','tab:blue','white'])
+reds = mpl.colors.LinearSegmentedColormap.from_list('', ['black','tab:red', 'white'])
+greens = mpl.colors.LinearSegmentedColormap.from_list('', ['black', 'tab:green','white'])
+oranges = mpl.colors.LinearSegmentedColormap.from_list('', ['black','tab:orange','white'])
+purples = mpl.colors.LinearSegmentedColormap.from_list('', ['black','purple','white'])
+golds = mpl.colors.LinearSegmentedColormap.from_list('', ['black','gold','white'])
+grays = mpl.colors.LinearSegmentedColormap.from_list('', ['black','gray','white'])
+RGB = mpl.colors.LinearSegmentedColormap.from_list('', ['gray', 'blue',  'green', 'red', 'gray'])
+
+mpl.rcParams.update(mpl.rcParamsDefault) # Reset user themes
+plt.style.use(['science']) # Figures sized for publication
+plt.style.use(['notebook']) # Figures adjusted for distant viewing
+
+cs = ['tab:red', 'tab:green', 'tab:blue', 'tab:orange', 'purple', 'gold', 'gray']
+
+# Quick functions for picking out relevant parameters from Odemis files
+get_img_arr = lambda x : x['ImageData']['Image'][()].squeeze()
+get_scaleX = lambda x : x['ImageData']['DimensionScaleX'][()].squeeze()
+get_scaleY = lambda x : x['ImageData']['DimensionScaleY'][()].squeeze()
+get_scaleC = lambda x : x['ImageData']['DimensionScaleC'][()].squeeze() # for wavelengths
+
+# Quick functions for cleaning data
+normalize = lambda x : (x-np.amin(x))/(np.amax(x)-np.amin(x))
+rescale = lambda x : x/np.amax(x)
+
+def remove_spikes(x, threshold=50):
+    x = x.copy()
+    peaks, props = find_peaks(x, threshold=threshold)
+    for i in peaks:
+        x[i-2:i+3] = np.mean(np.concatenate([x[i-3:i-5],x[i+4:i+6]]))
+    return x
+
+def find_nearest(array, value):
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx
+
+
+# Functions for displaying SEM image data
+def get_ranges(acq, mult_scale=1e6):
+    """
+    Get points along x and y dimensions for given acquisition.
+    Parameters
+    ----------
+    acq : hdf5 group
+        
+    mult_scale : float
+         (Default value = 1e6)
+
+    Returns
+    -------
+    x_rng, y_rng : tuple
+    """
+    arr = acq['ImageData']['Image'][()].squeeze()
+    title = acq['PhysicalData']['Title'][()]
+    
+    if arr.ndim == 1:
+        arr = np.atleast_2d(arr).T  # Extend nx1 datasets if necessary
+    
+    if b'Spectrum' not in title:
+#         try:
+        ny, nx = arr.shape[-2:] # need to exlude wl dim for Acq 2
+#         except ValueError:  # catch case for nx1 dataset
+#             ny = arr.shape[-1]
+#             nx = 1
+    elif arr.ndim == 2:  # Acq 2 during nx1 dataset
+        ny = arr.shape[-1]
+        nx = 1
+    else:
+        ny, nx = arr.shape[-2:]
+    
+    yscale = acq['ImageData']['DimensionScaleY'][()]*mult_scale 
+    xscale = acq['ImageData']['DimensionScaleX'][()]*mult_scale 
+    yoff = acq['ImageData']['YOffset'][()]*mult_scale
+    xoff = acq['ImageData']['XOffset'][()]*mult_scale
+    
+    ylen = ny*yscale
+    xlen = nx*xscale
+    x0 = -xlen/2 + xoff
+    x1 = xlen/2 + xoff
+    y0 = -ylen/2 + yoff
+    y1 = ylen/2 + yoff
+    
+    x_rng = np.arange(x0+xscale/2, x1, xscale)
+    y_rng = np.arange(y0+yscale/2, y1, yscale)[::-1] # for proper xarray coords
+    
+    return x_rng, y_rng
+
+def add_colorbar(im, aspect=20, pad_fraction=0.5, **kwargs): # See https://nbviewer.jupyter.org/github/mgeier/python-audio/blob/master/plotting/matplotlib-colorbar.ipynb
+    divider = axes_grid1.make_axes_locatable(im.axes)
+    width = axes_grid1.axes_size.AxesY(im.axes, aspect=1./aspect)
+    pad = axes_grid1.axes_size.Fraction(pad_fraction, width)
+    current_ax = plt.gca()
+    cax = divider.append_axes("right", size=width, pad=pad)
+    plt.sca(current_ax)
+    return im.axes.figure.colorbar(im, cax=cax, **kwargs)
+
+# From rectangles to list of points.
+
+def enume(htuples):
+    point_list = []
+    for htuple in htuples:
+        x_coords = list(range(min(htuple[0][0], htuple[1][0]), max(htuple[0][0], htuple[1][0]) + 1))
+        y_coords = list(range(min(htuple[0][1], htuple[1][1]), max(htuple[0][1], htuple[1][1]) + 1))
+        for y in y_coords:
+            for x in x_coords:
+                point_list.append([x,y])
+    return point_list
+                
+# From coordinates to index in spec_list
+
+def coord_to_index(x,y):
+    return y * x_width + x 
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mh5py[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'numpy'
+ModuleNotFoundError: No module named 'numpy'
+

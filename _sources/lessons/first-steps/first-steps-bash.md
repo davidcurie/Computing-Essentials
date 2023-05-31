@@ -74,7 +74,7 @@ terminal screen. These are commonly accessed by pressing the <kbd>up</kbd> and
 ```
 
 You can enter interactive mode in either of these commands by passing the `-i`
-flag. This will alert prompt you to confirm before any potentially dangerous overwrites.
+flag. This will prompt you to confirm before any potentially dangerous overwrites.
 
 ```bash
 ~ $ mv -i original.txt new/directory/original.txt
